@@ -6,31 +6,41 @@ drop table if exists amg_meal;
 drop table if exists amg_meal_users;
 
 create table amg_users(
-	id				serial,
+	amg_user_id		serial,
 	username 		varchar(255) not null,
 	password_hash	bytea not null,
 	password_salt	bytea not null,
 	email			varchar(255) unique not null,
-	constraint amg_user_id
-		primary key(id)
+	constraint amg_user_id_pk
+		primary key(amg_user_id)
 );
 create table amg_votes(
-	id				serial,
-
+	amg_vote_id				serial,
+	restaurant				varchar(255),
+	vote_meal_id			int,
+	constraint amg_vote_id_pk
+		primary key(amg_vote_id)
 );
 create table amg_likes(
-	id				serial,
+	amg_like_id				serial,
+	amg_like				varchar(255),
+	amg_user_id 			int,
+	constraint amg_like_id_pk
+		primary key(amg_like_id)
 
 );
 create table amg_cuisines(
-	id				serial,
+	amg_cuisine_id			serial,
+	constraint amg_cuisine_id_pk
+		primary key(amg_cuisine_id)
 
 );
 create table amg_meal(
-	id				serial,
+	amg_meal_id				serial,
+	constraint amg_meal_id_pk
+		primary key(amg_meal_id)
 
 );
 create table amg_meal_users(
-	id				serial,
 
 );
