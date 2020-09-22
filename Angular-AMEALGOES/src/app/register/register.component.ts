@@ -9,8 +9,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
-  loading = false;
   submitted = false;
+  loading = false;
 
   constructor(private FormBuilder: FormBuilder) { }
 
@@ -31,6 +31,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+
+    this.submitted=true;
     let firstName = this.formFields.firstName.value;
     let lastName = this.formFields.lastName.value;
     let email = this.formFields.email.value;

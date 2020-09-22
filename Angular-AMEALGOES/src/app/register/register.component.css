@@ -1,0 +1,27 @@
+#page-container {
+    padding: 3rem 3rem;
+}
+
+#page-header {
+    font-size: xx-large;
+    text-align: center;
+    padding: 1rem;
+    color: darkslateblue;
+}
+
+#burger-img {
+    height: 2rem;
+    width: 2rem;
+}
+
+#registration-container {
+    padding: 1.5rem 5rem;
+    background-color: bisque;
+    border: 5px solid black;
+    font-size: 1.5rem;
+}
+
+#form-disclaimer {
+    font-size: 1rem;
+}
+

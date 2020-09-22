@@ -1,50 +1,64 @@
-<div id="registration-container">
-    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+<div id="page-container">
+   
+    <header id="page-header">Registration Page 
+        <img id="burger-img" src="assets/burger.png"/>
+    </header>
+        
+    
 
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input id="firstName" type="text" class="form-control" formControlName="firstName"/>
-            <div *ngIf="submitted && formFields.firstName.errors">
-                <p class="alert alert-danger">First Name Is Required!</p>
+    <div id="registration-container">
+        <form [formGroup]="registrationForm" (ngSubmit)="register()">
+
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input id="firstName" type="text" class="form-control" formControlName="firstName"/>
+                <div *ngIf="submitted && formFields.firstName.errors">
+                    <p class="alert alert-danger">First Name Is Required!</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input id="lastName" type="text" class="form-control" formControlName="lastName"/>
-            <div *ngIf="submitted && formFields.lastName.errors">
-                <p class="alert alert-danger">Last Name Is Required!</p>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" type="text" class="form-control" formControlName="lastName"/>
+                <div *ngIf="submitted && formFields.lastName.errors">
+                    <p class="alert alert-danger">Last Name Is Required!</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" class="form-control" formControlName="email"/>
-            <div *ngIf="submitted && formFields.email.errors">
-                <p class="alert alert-danger">Email Is Required!</p>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control" formControlName="email"/>
+                <div *ngIf="submitted && formFields.email.errors">
+                    <p class="alert alert-danger">Email Is Required!</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input id="username" type="text" class="form-control" formControlName="username"/>
-            <div *ngIf="submitted && formFields.username.errors">
-                <p class="alert alert-danger">Username Is Required!</p>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" class="form-control" formControlName="username"/>
+                <div *ngIf="submitted && formFields.username.errors">
+                    <p class="alert alert-danger">Username Is Required!</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="Password">Password</label>
-            <input id="password" type="password" class="form-control" formControlName="password"/>
-            <div *ngIf="submitted && formFields.password.errors">
-                <p class="alert alert-danger">Password Is Required!</p>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input id="password" type="password" class="form-control" formControlName="password"/>
+                <div *ngIf="submitted && formFields.password.errors">
+                    <p class="alert alert-danger">Password Is Required!</p>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <button class="btn btn-primary" [disabled]="loading">Register</button>
-        </div>
-    </form>
+            <div class="form-group">
+                <button class="btn btn-primary" [disabled]="loading">Register</button>
+            </div>
+
+            <div id="form-disclaimer">
+                *A-MEAL-GOES is in early development, this form does not work currently. Thank You!
+            </div>
+        </form>
+    </div>
+
 </div>
 
 
