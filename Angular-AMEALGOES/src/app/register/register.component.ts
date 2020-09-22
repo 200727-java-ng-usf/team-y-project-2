@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
-  loading = true;
+  loading = false;
   submitted = false;
 
   constructor(private FormBuilder: FormBuilder) { }
@@ -31,7 +31,18 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    let firstName = this.formFields.firstName.value;
+    let lastName = this.formFields.lastName.value;
+    let email = this.formFields.email.value;
+    let username = this.formFields.username.value;
+    let password = this.formFields.password.value;
 
+    console.log('These are the entered values:');
+    console.log(`First Name: ${ firstName }`);
+    console.log(`Last Name: ${ lastName }`);
+    console.log(`Email: ${ email }`);
+    console.log(`Username: ${ username }`);
+    console.log(`Password: ${ password }`);
   }
 
 }
