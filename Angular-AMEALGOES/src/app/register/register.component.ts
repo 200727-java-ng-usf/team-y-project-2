@@ -12,16 +12,15 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   loading = false;
 
-  constructor(private FormBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
-    this.registrationForm = this.FormBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+    this.registrationForm = this.formBuilder.group({
+      // This validates the user email is alphanumeric and follows traditional email syntax abc123@gmail.com
+      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      username: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
+      password: [null, Validators.required]
     });
 
   }
@@ -33,15 +32,13 @@ export class RegisterComponent implements OnInit {
   register() {
 
     this.submitted=true;
-    let firstName = this.formFields.firstName.value;
-    let lastName = this.formFields.lastName.value;
+    this.loading=true;
+
     let email = this.formFields.email.value;
     let username = this.formFields.username.value;
     let password = this.formFields.password.value;
 
     console.log('These are the entered values:');
-    console.log(`First Name: ${ firstName }`);
-    console.log(`Last Name: ${ lastName }`);
     console.log(`Email: ${ email }`);
     console.log(`Username: ${ username }`);
     console.log(`Password: ${ password }`);
