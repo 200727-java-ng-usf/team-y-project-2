@@ -38,21 +38,19 @@
             <div class="form-group">
                 <label for="Password">Password</label>
                 <input id="password" type="password" class="form-control" formControlName="password"/>
-                <div *ngIf="submitted && formFields.password.errors">
+                <div *ngIf="submitted && formFields.password.errors?.required">
                     <p class="alert alert-danger">Password Is Required!</p>
+                </div>
+                <div *ngIf="submitted && formFields.password.errors?.minlength">
+                    <p class="alert alert-danger">Password must be at least 8 characters long.</p>
+                </div>
+                <div *ngIf="submitted && formFields.password.errors?.maxlength">
+                    <p class="alert alert-danger">Password is too long, max length is 50 characters.</p>
                 </div>
             </div>
 
-            <!-- <div class="form-group">
-                <label for="Password">Confirm Password</label>
-                <input id="confirmPassword" type="password" class="form-control" formControlName="confirmPassword"/>
-                <div *ngIf="submitted && formFields.confirmPassword.errors">
-                    <p class="alert alert-danger">Password Is Required!</p>
-                </div>
-            </div> -->
-
             <div class="form-group">
-                <button class="btn btn-primary" [disabled]="loading">Register</button>
+                <button class="btn btn-primary">Register</button>
             </div>
 
             <div id="form-disclaimer">
