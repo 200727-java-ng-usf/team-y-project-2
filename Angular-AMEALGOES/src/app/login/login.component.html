@@ -1,17 +1,22 @@
+<div id="page-container">
+    <header id="page-header">Login Page 
+    </header>
+
 <div id="login-container">
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-group">
             <label for="username">Username</label>
             <input id="username" type="text" class="form-control" formControlName="username"/>
-            <div>
+            <div *ngIf="submitted && formFields.username.errors">
                 <br>
                 <p class="alert alert-danger">Username is required!</p>
             </div>
         </div>
+
         <div class="form-group">
             <label for="password">Password</label>
             <input id="password" type="password" class="form-control" formControlName="password"/>
-            <div>
+            <div *ngIf="submitted && formFields.password.errors">
                 <br>
                 <p class="alert alert-danger">Password is required!</p>
             </div>
@@ -20,4 +25,5 @@
             <button class="btn btn-primary">Login</button>
         </div>
     </form>
+</div>
 </div>
