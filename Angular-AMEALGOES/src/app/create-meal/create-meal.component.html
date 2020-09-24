@@ -1,0 +1,36 @@
+<div id="page-container">
+   
+    <header id="page-header">Create A New Meal! 
+        <img id="burger-img" src="assets/burger.png"/>
+    </header>
+
+    <div id="newMeal-container">
+        <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
+
+            <!-- ZipCode input and validation handling -->
+            <div class="form-group">
+                <label for="zip">ZipCode</label>
+                <input id="zip" type="text" class="form-control" formControlName="zip"/>
+                <div *ngIf="submitted && formFields.zip.errors?.required">
+                    <p class="alert alert-danger">ZipCode Is Required!</p>
+                </div>
+                <div *ngIf="submitted && formFields.zip.errors?.minlength || formFields.zip.errors?.maxlength || formFields.zip.errors?.pattern">
+                    <p class="alert alert-danger">Invalid ZipCode.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+
+            <div id="form-disclaimer">
+                *A-MEAL-GOES is in early development, this form does not work currently. Thank You!
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
