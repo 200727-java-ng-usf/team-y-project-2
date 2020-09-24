@@ -1,13 +1,5 @@
-  
 #page-container {
     padding: 3rem 3rem;
-}
-
-#page-header {
-    font-size: xx-large;
-    text-align: center;
-    padding: 1rem;
-    color: darkslateblue;
 }
 
 #burger-img {
@@ -15,13 +7,13 @@
     width: 2rem;
 }
 
-#login-container {
+#home-container {
     border-radius: 3rem;
     border: 2px solid black;
     padding: 1.5rem 5rem;
+    text-align: center;  
     background-color: bisque;
-    border-radius: 3rem;
-    border: 2px solid black;
+    border: 5px solid black;
     font-size: 1.5rem;
 }
 
