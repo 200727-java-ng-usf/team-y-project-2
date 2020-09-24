@@ -1,5 +1,5 @@
 <div id="page-container">
     <div id="home-container">
-        <button *ngFor="let link of authenticatedUserLinks" type="button" class="btn btn-primary btn-lg"><a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a></button>
+        <button *ngFor="let link of authenticatedUserLinks" type="button" class="btn btn-primary"><a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a></button>
     </div>
 </div>
