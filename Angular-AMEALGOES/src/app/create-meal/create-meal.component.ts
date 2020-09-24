@@ -21,6 +21,7 @@ export class CreateMealComponent implements OnInit {
 
     this.newMealForm = this.formBuilder.group({
       zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^[0-9]\d*$/)]],
+      city: [null, Validators.required]
     });
 
   }
