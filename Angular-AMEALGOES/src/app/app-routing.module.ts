@@ -4,15 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent }, // goes to register page
-  { path: 'login', component: LoginComponent }, // for when user registers, they get redirected to login
-  { path: '', component: LoginComponent }, // opening page
-  { path: 'newMeal', component: CreateMealComponent} // page for creating new 'meal' instance
-];
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'createmeal', component: RegisterComponent },
+  { path: 'joinmeal', component: RegisterComponent },
+  { path: '', component: LoginComponent },
+  { path: 'newMeal', component: CreateMealComponent}
 
-
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
