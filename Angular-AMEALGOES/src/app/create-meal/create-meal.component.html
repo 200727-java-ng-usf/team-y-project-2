@@ -14,8 +14,11 @@
                 <div *ngIf="submitted && formFields.zip.errors?.required">
                     <p class="alert alert-danger">ZipCode Is Required!</p>
                 </div>
-                <div *ngIf="submitted && formFields.zip.errors?.minlength || formFields.zip.errors?.maxlength || formFields.zip.errors?.pattern">
-                    <p class="alert alert-danger">Invalid ZipCode.</p>
+                <div *ngIf="submitted && formFields.zip.errors?.minlength">
+                    <p class="alert alert-danger">ZipCode Must Be 5 Digits.</p>
+                </div>
+                <div *ngIf="submitted && formFields.zip.errors?.maxlength">
+                    <p class="alert alert-danger">ZipCode Must Be 5 Digits.</p>
                 </div>
             </div>
 

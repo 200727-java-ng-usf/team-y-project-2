@@ -19,7 +19,7 @@ export class CreateMealComponent implements OnInit {
   ngOnInit(): void {
 
     this.newMealForm = this.formBuilder.group({
-      zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern("[0-9]")]],
+      zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
     });
 
   }
@@ -30,6 +30,7 @@ export class CreateMealComponent implements OnInit {
 
   beginMeal(){
     this.submitted = true;
+    console.log(this.formFields.zip.value);
 
   }
 
