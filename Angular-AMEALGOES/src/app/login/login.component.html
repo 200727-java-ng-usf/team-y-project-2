@@ -23,7 +23,8 @@
             </div>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary" [disabled]="loading">Login</button>
+            <img id="loading-img" src="assets/giphy.gif" *ngIf="loading"/>
         </div>
     </form>
 </div>
