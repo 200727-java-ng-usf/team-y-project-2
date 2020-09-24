@@ -10,13 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './nav/nav.component';
+import { JoinMealComponent } from './join-meal/join-meal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavComponent
+    NavComponent,
+    JoinMealComponent
   ],
   imports: [
     BrowserModule,

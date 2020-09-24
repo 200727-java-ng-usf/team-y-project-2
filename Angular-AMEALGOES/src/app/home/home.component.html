@@ -1,9 +1,8 @@
 <div id="page-container">
     <div id="home-container">
         <ul>
-            <li class="nav-item" >
-                <a class="nav-link" [routerLink]="/createmeal">Create a Meal</a>
-                <a class="nav-link" [routerLink]="/joinmeal">Join a Meal</a>
+            <li *ngFor="let link of authenticatedUserLinks">
+                <a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a>
             </li>
         </ul>
     </div>
