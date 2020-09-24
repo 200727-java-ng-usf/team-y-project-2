@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MealService } from '../services/meal.service';
 
 @Component({
   selector: 'app-create-meal',
@@ -12,14 +13,14 @@ export class CreateMealComponent implements OnInit {
   newMealForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { 
+  constructor(private formBuilder: FormBuilder, private mealService: MealService, private router: Router) { 
 
   }
 
   ngOnInit(): void {
 
     this.newMealForm = this.formBuilder.group({
-      zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^[0-9]\d*$/)]],
     });
 
   }
@@ -29,8 +30,15 @@ export class CreateMealComponent implements OnInit {
   }
 
   beginMeal(){
+
     this.submitted = true;
-    console.log(this.formFields.zip.value);
+
+    if (this.newMealForm.invalid) return;
+
+    // Uncomment when the service for connecting to the api is finished.
+    //this.mealService.beginMeal(this.formFields.zip.value)
+      
+    
 
   }
 

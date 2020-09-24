@@ -20,10 +20,13 @@
                 <div *ngIf="submitted && formFields.zip.errors?.maxlength">
                     <p class="alert alert-danger">ZipCode Must Be 5 Digits.</p>
                 </div>
+                <div *ngIf="submitted && formFields.zip.errors?.pattern">
+                    <p class="alert alert-danger">ZipCode Can't Contain Letters.</p>
+                </div>
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary" [disabled]="submitted">Submit</button>
             </div>
 
             <div id="form-disclaimer">
