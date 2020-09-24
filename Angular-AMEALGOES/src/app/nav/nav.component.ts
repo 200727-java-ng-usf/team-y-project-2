@@ -27,6 +27,10 @@ export class NavComponent{
       fragment: '/register'
     },
     {
+      linkName: 'Home',
+      fragment: '/home'
+    },
+    {
       linkName: 'New Meal',
       fragment: '/newMeal'
     }
