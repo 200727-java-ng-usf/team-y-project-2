@@ -1,0 +1,66 @@
+<div id="page-container">
+   
+    <header id="page-header">Registration Page 
+        <img id="burger-img" src="assets/burger.png"/>
+    </header>
+
+    <div id="registration-container">
+        <form [formGroup]="registrationForm" (ngSubmit)="register()">
+
+            <!-- Email input and validation handling -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control" formControlName="email"/>
+                <div *ngIf="submitted && formFields.email.errors?.required">
+                    <p class="alert alert-danger">Email Is Required!</p>
+                </div>
+                <div *ngIf="submitted && formFields.email.errors?.pattern">
+                    <p class="alert alert-danger">Invalid email input.</p>
+                </div>
+            </div>
+
+            <!-- // Username and validation handling -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" class="form-control" formControlName="username"/>
+                <div *ngIf="submitted && formFields.username.errors?.required">
+                    <p class="alert alert-danger">Username Is Required!</p>
+                </div>
+                <div *ngIf="submitted && formFields.username.errors?.minlength">
+                    <p class="alert alert-danger">Username must be at least 6 characters long.</p>
+                </div>
+                <div *ngIf="submitted && formFields.username.errors?.maxlength">
+                    <p class="alert alert-danger">Username is too long, max length is 25 characters.</p>
+                </div>
+            </div>
+
+            <!-- // Password and validation handling -->
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input id="password" type="password" class="form-control" formControlName="password"/>
+                <div *ngIf="submitted && formFields.password.errors?.required">
+                    <p class="alert alert-danger">Password Is Required!</p>
+                </div>
+                <div *ngIf="submitted && formFields.password.errors?.minlength">
+                    <p class="alert alert-danger">Password must be at least 8 characters long.</p>
+                </div>
+                <div *ngIf="submitted && formFields.password.errors?.maxlength">
+                    <p class="alert alert-danger">Password is too long, max length is 50 characters.</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary">Register</button>
+            </div>
+
+            <div id="form-disclaimer">
+                *A-MEAL-GOES is in early development, this form does not work currently. Thank You!
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
