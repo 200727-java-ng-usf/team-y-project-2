@@ -24,3 +24,8 @@ hs_err_pid*
 
 # Angular
 /node_modules
+
+
+#auto-generated operating system files
+#mac
+.DS_Store
