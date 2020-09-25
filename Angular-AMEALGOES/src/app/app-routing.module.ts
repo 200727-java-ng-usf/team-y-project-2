@@ -5,12 +5,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
 import { HomeComponent } from './home/home.component';
+import { JoinMealComponent } from './join-meal/join-meal.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'createmeal', component: RegisterComponent },
-  { path: 'joinmeal', component: RegisterComponent },
+  { path: 'joinMeal', component: JoinMealComponent },
   { path: '', component: LoginComponent },
   { path: 'newMeal', component: CreateMealComponent}
 
