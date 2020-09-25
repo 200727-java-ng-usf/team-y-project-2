@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 import { environment as env } from '../../environments/environment';
+import { restaurant } from '../models/restaurant';
 
 
 @Injectable({
@@ -23,4 +25,11 @@ export class MealService {
       observe: 'response' // default is body (which refers to the body of the response)
     });
   }
+
+  async getResturants() {
+
+    return await this.http.get(`${env.API_URL}/meal`).toPromise();
+
+  }
+
 }

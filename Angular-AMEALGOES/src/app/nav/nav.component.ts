@@ -33,6 +33,10 @@ export class NavComponent{
     {
       linkName: 'New Meal',
       fragment: '/newMeal'
+    },
+    {
+      linkName: 'Vote Meal',
+      fragment: '/voteMeal'
     }
   ]
 }
