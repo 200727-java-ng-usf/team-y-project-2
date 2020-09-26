@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { environment as env } from '../../environments/environment';
 
@@ -9,8 +10,7 @@ import { environment as env } from '../../environments/environment';
 })
 export class MealService {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private router: Router) { }
 
   sendMeal(restaurantList: any) {
 
@@ -22,21 +22,22 @@ export class MealService {
       },
       observe: 'response' // default is body (which refers to the body of the response)
     });
-
-    //Navigate to vote meal after this
   }
 
   joinMeal(mealCode: number) {
 
     console.log('in joinMeal()')
 
+
     return this.http.post(`${env.API_URL}/meal`, mealCode, {
       headers: {
         'Content-type': 'text/html'
-      },
-      observe: 'response' // default is body (which refers to the body of the response)
-    });
+      }
+    })
+    // .subscribe(res => {
+    //     if(res === '200') this.router.navigate(['/voteMeal']);
 
-    //Navigate to vote meal after this
+  
   }
+  
 }
