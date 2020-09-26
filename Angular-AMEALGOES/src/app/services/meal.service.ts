@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 import { environment as env } from '../../environments/environment';
 
@@ -21,7 +22,11 @@ export class MealService {
         'Content-type': 'application/json'
       },
       observe: 'response' // default is body (which refers to the body of the response)
-    });
+    }).pipe(
+      map(resp => {
+        if(resp.status == 200 || resp.status == 201) this.router.navigate(['/voteMeal']);
+      })
+    );
   }
 
   joinMeal(mealCode: number) {
@@ -32,8 +37,13 @@ export class MealService {
     return this.http.post(`${env.API_URL}/meal`, mealCode, {
       headers: {
         'Content-type': 'text/html'
-      }
-    })
+      },
+      observe: 'response'
+    }).pipe(
+      map(resp => {
+        if(resp.status == 200 || resp.status == 201) this.router.navigate(['/voteMeal']);
+      })
+    );
     // .subscribe(res => {
     //     if(res === '200') this.router.navigate(['/voteMeal']);
 
