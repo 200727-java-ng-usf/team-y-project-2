@@ -23,4 +23,16 @@ export class MealService {
       observe: 'response' // default is body (which refers to the body of the response)
     });
   }
+
+  joinMeal(mealCode: number) {
+
+    console.log('in joinMeal()')
+
+    return this.http.post(`${env.API_URL}/meal`, mealCode, {
+      headers: {
+        'Content-type': 'text/html'
+      },
+      observe: 'response' // default is body (which refers to the body of the response)
+    });
+  }
 }
