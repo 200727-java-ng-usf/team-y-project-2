@@ -13,11 +13,13 @@ export class RegisterService {
   }
 
   // 
-  register(email: string, username: string, password: string) {
+  register(username: string, password: string, email: string) {
 
-    console.log('in authenticate()');
+    let newUser = { username, password, email };
 
-    let newUser = { email, username, password };
+    console.log('in register service');
+    console.log(newUser);
+
 
     return this.http.post(`${env.API_URL}/users`, newUser, {
       headers: {
