@@ -22,6 +22,8 @@ export class MealService {
       },
       observe: 'response' // default is body (which refers to the body of the response)
     });
+
+    //Navigate to vote meal after this
   }
 
   joinMeal(mealCode: number) {
@@ -34,5 +36,7 @@ export class MealService {
       },
       observe: 'response' // default is body (which refers to the body of the response)
     });
+
+    //Navigate to vote meal after this
   }
 }
