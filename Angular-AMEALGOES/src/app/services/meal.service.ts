@@ -44,8 +44,6 @@ export class MealService {
         if(resp.status == 200 || resp.status == 201) this.router.navigate(['/voteMeal']);
       })
     );
-    // .subscribe(res => {
-    //     if(res === '200') this.router.navigate(['/voteMeal']);
 
   
   }
