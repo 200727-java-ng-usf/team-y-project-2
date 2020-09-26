@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 
 import { environment as env } from '../../environments/environment';
@@ -11,7 +13,7 @@ import { restaurant } from '../models/restaurant';
 })
 export class MealService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   sendMeal(restaurantList: any) {
@@ -28,7 +30,10 @@ export class MealService {
 
   async getResturants() {
 
-    return await this.http.get(`${env.API_URL}/meal`).toPromise();
+    this.http.get(`${env.API_URL}/meal`).subscribe(resp => 
+      {this.router.navigate(['/voteMeal']);
+      return resp
+    });
 
   }
 
