@@ -17,10 +17,6 @@ export class RegisterService {
 
     let newUser = { username, password, email };
 
-    console.log('in register service');
-    console.log(newUser);
-
-
     return this.http.post(`${env.API_URL}/users`, newUser, {
       headers: {
         'Content-type': 'application/json'
