@@ -29,7 +29,9 @@ export class CreateMealComponent implements OnInit {
     return this.newMealForm.controls;
   }
 
-  beginMeal(){    
+  beginMeal(){ 
+    
+    this.mealService.sendMeal(this.formFields.location.value)
   
   }
 

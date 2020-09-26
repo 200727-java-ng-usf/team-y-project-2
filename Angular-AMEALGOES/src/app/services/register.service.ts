@@ -19,7 +19,7 @@ export class RegisterService {
 
     let newUser = { email, username, password };
 
-    return this.http.post(`${env.API_URL}/register`, newUser, {
+    return this.http.post(`${env.API_URL}/users`, newUser, {
       headers: {
         'Content-type': 'application/json'
       },
