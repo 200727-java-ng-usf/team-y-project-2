@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'createmeal', component: RegisterComponent },
   { path: 'joinmeal', component: RegisterComponent },
   { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'newMeal', component: CreateMealComponent}
 
 ]
