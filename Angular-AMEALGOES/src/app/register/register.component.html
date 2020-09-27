@@ -7,18 +7,6 @@
     <div id="registration-container">
         <form [formGroup]="registrationForm" (ngSubmit)="register()">
 
-            <!-- Email input and validation handling -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" formControlName="email"/>
-                <div *ngIf="submitted && formFields.email.errors?.required">
-                    <p class="alert alert-danger">Email Is Required!</p>
-                </div>
-                <div *ngIf="submitted && formFields.email.errors?.pattern">
-                    <p class="alert alert-danger">Invalid email input.</p>
-                </div>
-            </div>
-
             <!-- // Username and validation handling -->
             <div class="form-group">
                 <label for="username">Username</label>
@@ -46,6 +34,18 @@
                 </div>
                 <div *ngIf="submitted && formFields.password.errors?.maxlength">
                     <p class="alert alert-danger">Password is too long, max length is 50 characters.</p>
+                </div>
+            </div>
+
+            <!-- Email input and validation handling -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control" formControlName="email"/>
+                <div *ngIf="submitted && formFields.email.errors?.required">
+                    <p class="alert alert-danger">Email Is Required!</p>
+                </div>
+                <div *ngIf="submitted && formFields.email.errors?.pattern">
+                    <p class="alert alert-danger">Invalid email input.</p>
                 </div>
             </div>
 
