@@ -43,8 +43,6 @@ export class RegisterComponent implements OnInit {
 
                       // user successfully logged in, execute the function below
                       () => {
-                        console.log('Registration successful!');
-                        console.log('Navigating to Login Page...');
                         this.router.navigate(['/login']);
                       },
 
@@ -53,11 +51,6 @@ export class RegisterComponent implements OnInit {
                       err => {
                         console.log(err);
                         this.submitted = false;
-                      },
-
-                      // only executes if the err doesn't catch something wrong
-                      () => {
-                        console.log('observable complete!')
                       }
                     );
   }
