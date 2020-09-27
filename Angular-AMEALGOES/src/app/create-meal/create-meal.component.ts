@@ -21,12 +21,8 @@ export class CreateMealComponent implements OnInit {
   ngOnInit(): void {
 
     this.newMealForm = this.formBuilder.group({
-      
-      city: [null, Validators.required]
-      //zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^[0-9]\d*$/)]],
-      //city: [null, Validators.required]
-      
 
+      city: [null, Validators.required]
 
     });
 
@@ -36,10 +32,14 @@ export class CreateMealComponent implements OnInit {
     return this.newMealForm.controls;
   }
 
+
   beginMeal(){
 
     this.submitted = true;
 
+    //not sure about what this is
+    //this.mealService.sendMeal(this.formFields.location.value);
+    
     if (this.newMealForm.invalid) return;
 
     //need to get the value within city component, not sure how without getElementById
@@ -63,12 +63,8 @@ export class CreateMealComponent implements OnInit {
     }
     );
     
-    
     // Uncomment when the service for connecting to the api is finished.
     //this.mealService.beginMeal(this.formFields.zip.value)
-      
-    
-
   }
 
 }

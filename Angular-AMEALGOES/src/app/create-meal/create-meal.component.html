@@ -5,17 +5,19 @@
     </header>
 
     <div id="newMeal-container">
-        <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
 
-            <!-- Area and validation handling -->
+        <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()"></form>
+
+            <!-- city and validation handling -->
             <div class="form-group">
                 <label for="city">City</label>
-                <input id="city" type="text" class="form-control" formControlName="city"/>
+                <select id="city" class="form-control" formControlName="city">
                 <option value = "New York"> New York</option>
                 <option value = "Philadelphia"> Philadelphia</option>
-                <div *ngIf="submitted && formFields.city.errors">
-                    <p class="alert alert-danger">City Is Required!</p>
+            </select>
+
                 </div>
+
             </div>
 
             <div class="form-group">
@@ -26,6 +28,7 @@
                 *A-MEAL-GOES is in early development, this form does not work currently. Thank You!
             </div>
         </form>
+        
     </div>
 
 </div>
