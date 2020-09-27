@@ -25,9 +25,6 @@ export class CreateMealComponent implements OnInit {
       city: [null, Validators.required]
       //zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^[0-9]\d*$/)]],
       //city: [null, Validators.required]
-      
-
-
     });
 
   }
@@ -66,9 +63,10 @@ export class CreateMealComponent implements OnInit {
     
     // Uncomment when the service for connecting to the api is finished.
     //this.mealService.beginMeal(this.formFields.zip.value)
-      
-    
+  beginMeal(){ 
 
-  }
+    this.mealService.sendMeal(this.formFields.location.value)
+  
+}
 
 }
