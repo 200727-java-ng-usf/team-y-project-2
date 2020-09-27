@@ -60,24 +60,5 @@ export class RegisterComponent implements OnInit {
                         console.log('observable complete!')
                       }
                     );
-
-
-
-
-
-
-
-
-    // The below values are to demonstrate form data is properly collected and validated
-
-    // let email = this.formFields.email.value;
-    // let username = this.formFields.username.value;
-    // let password = this.formFields.password.value;
-
-    // console.log('These are the entered values:');
-    // console.log(`Email: ${ email }`);
-    // console.log(`Username: ${ username }`);
-    // console.log(`Password: ${ password }`);
   }
-
 }
