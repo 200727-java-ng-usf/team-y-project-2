@@ -7,27 +7,12 @@
     <div id="newMeal-container">
         <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
 
-            <!-- ZipCode input and validation handling -->
-            <div class="form-group">
-                <label for="zip">ZipCode</label>
-                <input id="zip" type="text" class="form-control" formControlName="zip"/>
-                <div *ngIf="submitted && formFields.zip.errors?.required">
-                    <p class="alert alert-danger">ZipCode Is Required!</p>
-                </div>
-                <div *ngIf="submitted && formFields.zip.errors?.minlength">
-                    <p class="alert alert-danger">ZipCode Must Be 5 Digits.</p>
-                </div>
-                <div *ngIf="submitted && formFields.zip.errors?.maxlength">
-                    <p class="alert alert-danger">ZipCode Must Be 5 Digits.</p>
-                </div>
-                <div *ngIf="submitted && formFields.zip.errors?.pattern">
-                    <p class="alert alert-danger">ZipCode Can't Contain Letters.</p>
-                </div>
-            </div>
-
+            <!-- Area and validation handling -->
             <div class="form-group">
                 <label for="city">City</label>
                 <input id="city" type="text" class="form-control" formControlName="city"/>
+                <option value = "New York"> New York</option>
+                <option value = "Philadelphia"> Philadelphia</option>
                 <div *ngIf="submitted && formFields.city.errors">
                     <p class="alert alert-danger">City Is Required!</p>
                 </div>
