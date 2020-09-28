@@ -20,8 +20,7 @@ export class CreateMealComponent implements OnInit {
   ngOnInit(): void {
 
     this.newMealForm = this.formBuilder.group({
-      zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^[0-9]\d*$/)]],
-      city: [null, Validators.required]
+      location: [null, Validators.required]
     });
 
   }
@@ -30,17 +29,10 @@ export class CreateMealComponent implements OnInit {
     return this.newMealForm.controls;
   }
 
-  beginMeal(){
-
-    this.submitted = true;
-
-    if (this.newMealForm.invalid) return;
-
-    // Uncomment when the service for connecting to the api is finished.
-    //this.mealService.beginMeal(this.formFields.zip.value)
-      
+  beginMeal(){ 
     
-
+    this.mealService.sendMeal(this.formFields.location.value)
+  
   }
 
 }

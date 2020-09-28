@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
+import { ResultsComponent } from './results/results.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CreateMealComponent } from './create-meal/create-meal.component';
     RegisterComponent,
     HomeComponent,
     NavComponent,
-    CreateMealComponent
+    CreateMealComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
