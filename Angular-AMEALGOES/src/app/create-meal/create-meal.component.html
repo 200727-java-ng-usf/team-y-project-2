@@ -5,23 +5,16 @@
     </header>
 
     <div id="newMeal-container">
-
-        <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
-
+      <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
+            <!-- Area and validation handling -->
             <div class="form-group">
-                <label for="location">Location</label>
-                <select id="location" class="form-control" formControlName="location">
-                    <option value="loc1">Placeholder Location 1</option>
-                    <option value="loc2">Placeholder Location 2</option>
-                    <option value="loc3">Placeholder Location 3</option>
-                    <option value="loc4">Placeholder Location 4</option>
-                    <option value="loc5">Placeholder Location 5</option>
-                    <option value="loc6">Placeholder Location 6</option>
-                    <option value="loc7">Placeholder Location 7</option>
-                    <option value="loc8">Placeholder Location 8</option>
-                    <option value="loc9">Placeholder Location 9</option>
-                    <option value="loc10">Placeholder Location 10</option>
-                </select>
+                <label for="city">City</label>
+                <input id="city" type="text" class="form-control" formControlName="city"/>
+                <option value = "New York"> New York</option>
+                <option value = "Philadelphia"> Philadelphia</option>
+                <div *ngIf="submitted && formFields.city.errors">
+                    <p class="alert alert-danger">City Is Required!</p>
+                </div>
             </div>
 
             <div class="form-group">
