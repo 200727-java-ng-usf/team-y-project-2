@@ -21,9 +21,16 @@ export class CreateMealComponent implements OnInit {
   ngOnInit(): void {
 
     this.newMealForm = this.formBuilder.group({
+<<<<<<< HEAD
 
       city: [null, Validators.required]
 
+=======
+      
+      city: [null, Validators.required]
+      //zip: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern(/^[0-9]\d*$/)]],
+      //city: [null, Validators.required]
+>>>>>>> 3dd16f68398b34682d54f20942532dcf8f3d5e00
     });
 
   }
@@ -32,7 +39,10 @@ export class CreateMealComponent implements OnInit {
     return this.newMealForm.controls;
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3dd16f68398b34682d54f20942532dcf8f3d5e00
   beginMeal(){
 
     this.submitted = true;
@@ -65,6 +75,14 @@ export class CreateMealComponent implements OnInit {
     
     // Uncomment when the service for connecting to the api is finished.
     //this.mealService.beginMeal(this.formFields.zip.value)
+<<<<<<< HEAD
   }
+=======
+  beginMeal(){ 
+
+    this.mealService.sendMeal(this.formFields.location.value)
+  
+}
+>>>>>>> 3dd16f68398b34682d54f20942532dcf8f3d5e00
 
 }

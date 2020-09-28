@@ -42,20 +42,20 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
     
-    // this.authService.authenticate(this.formFields.username.value, this.formFields.password.value)
-    //                     .subscribe(
-    //                       () => {
-    //                         this.loading = false;
-    //                         console.log('login-successful');
-    //                         console.log('Navigating to dashboard...');
-    //                         this.router.navigate(['/dashboard']);
-    //                       },
-    //                       err => {
-    //                         console.log(err);
-    //                         this.loading = false;
-    //                         this.submitted = false;
-    //                       }
-    //                     );
+    this.authService.authenticate(this.formFields.username.value, this.formFields.password.value)
+                        .subscribe(
+                          () => {
+                            this.loading = false;
+                            console.log('login-successful');
+                            console.log('Navigating to dashboard...');
+                            this.router.navigate(['/home']);
+                          },
+                          err => {
+                            console.log(err);
+                            this.loading = false;
+                            this.submitted = false;
+                          }
+                        );
 
   }
 }
