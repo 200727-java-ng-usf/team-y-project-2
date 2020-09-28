@@ -13,14 +13,8 @@ const routes: Routes = [
   { path: 'createmeal', component: RegisterComponent },
   { path: 'joinmeal', component: RegisterComponent },
   { path: '', component: LoginComponent },
-<<<<<<< HEAD
   { path: 'newMeal', component: CreateMealComponent },
   { path: 'results', component: ResultsComponent }
-=======
-  { path: 'login', component: LoginComponent },
-  { path: 'newMeal', component: CreateMealComponent}
-
->>>>>>> e8017c0767d2e81de2bfb5e63e85c3cedb7a8a97
 ]
 
 @NgModule({
