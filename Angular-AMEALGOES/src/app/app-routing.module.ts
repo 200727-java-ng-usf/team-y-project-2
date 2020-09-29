@@ -11,7 +11,7 @@ import { ResultsComponent } from './results/results.component';
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'joinMeal', component: JoinMealComponent },
+  { path: 'joinmeal', component: JoinMealComponent },
   { path: '', component: LoginComponent },
   { path: 'newMeal', component: CreateMealComponent },
   { path: 'results', component: ResultsComponent },
