@@ -19,11 +19,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.registrationForm = this.formBuilder.group({
-      // This validates the user email is alphanumeric and follows traditional email syntax abc123@gmail.com
-      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+    this.registrationForm = this.formBuilder.group({      
       username: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
-      password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(50)]]
+      password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+      email: [null, Validators.required]
     });
 
   }
@@ -38,49 +37,21 @@ export class RegisterComponent implements OnInit {
 
     if (this.registrationForm.invalid) return;
 
-    // this.loading=true;
-
-    this.registerService.register(this.formFields.email.value, this.formFields.username.value, this.formFields.password.value)
+    this.registerService.register(this.formFields.username.value, this.formFields.password.value, this.formFields.email.value)
     
                     .subscribe(
 
                       // user successfully logged in, execute the function below
                       () => {
-                        console.log('Registration successful!');
-                        console.log('Navigating to Login Page...');
                         this.router.navigate(['/login']);
                       },
 
                       // if an error occurs, execute the function below; comment out this
                       // section if you'd like to see the observable complete
-                      // err => {
-                      //   console.log(err);
-                      //   this.submitted = false;
-                      // },
-
-                      // only executes if the err doesn't catch something wrong
-                      () => {
-                        console.log('observable complete!')
+                      err => {
+                        console.log(err);
+                        this.submitted = false;
                       }
                     );
-
-
-
-
-
-
-
-
-    // The below values are to demonstrate form data is properly collected and validated
-
-    // let email = this.formFields.email.value;
-    // let username = this.formFields.username.value;
-    // let password = this.formFields.password.value;
-
-    // console.log('These are the entered values:');
-    // console.log(`Email: ${ email }`);
-    // console.log(`Username: ${ username }`);
-    // console.log(`Password: ${ password }`);
   }
-
 }

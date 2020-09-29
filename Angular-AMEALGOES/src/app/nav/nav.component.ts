@@ -14,6 +14,10 @@ export class NavComponent{
     {
       linkName: 'Home',
       fragment: '/home'
+    },
+    {
+      linkName: 'New Meal',
+      fragment: '/newMeal'
     }
   ]
 
@@ -35,8 +39,13 @@ export class NavComponent{
       fragment: '/newMeal'
     },
     {
+<<<<<<< HEAD
       linkName: 'Join Meal',
       fragment: '/joinMeal'
+=======
+      linkName: 'Results',
+      fragment: '/results'
+>>>>>>> 76f35540fe60aeaad01122f3ccf54d732074c47a
     }
   ]
 }
