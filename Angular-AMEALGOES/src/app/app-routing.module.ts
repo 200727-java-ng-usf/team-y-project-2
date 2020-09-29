@@ -5,11 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
 import { HomeComponent } from './home/home.component';
-<<<<<<< HEAD
 import { JoinMealComponent } from './join-meal/join-meal.component';
-=======
 import { ResultsComponent } from './results/results.component';
->>>>>>> 76f35540fe60aeaad01122f3ccf54d732074c47a
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },

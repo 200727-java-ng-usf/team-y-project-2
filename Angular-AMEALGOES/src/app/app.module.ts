@@ -12,11 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
-<<<<<<< HEAD
 import { JoinMealComponent } from './join-meal/join-meal.component';
-=======
 import { ResultsComponent } from './results/results.component';
->>>>>>> 76f35540fe60aeaad01122f3ccf54d732074c47a
 
 
 @NgModule({
@@ -27,11 +24,8 @@ import { ResultsComponent } from './results/results.component';
     HomeComponent,
     NavComponent,
     CreateMealComponent,
-<<<<<<< HEAD
-    JoinMealComponent
-=======
+    JoinMealComponent,
     ResultsComponent
->>>>>>> 76f35540fe60aeaad01122f3ccf54d732074c47a
   ],
   imports: [
     BrowserModule,
