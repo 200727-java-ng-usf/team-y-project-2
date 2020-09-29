@@ -14,6 +14,10 @@ export class NavComponent{
     {
       linkName: 'Home',
       fragment: '/home'
+    },
+    {
+      linkName: 'New Meal',
+      fragment: '/newMeal'
     }
   ]
 
@@ -26,5 +30,17 @@ export class NavComponent{
       linkName: 'Register',
       fragment: '/register'
     },
+    {
+      linkName: 'Home',
+      fragment: '/home'
+    },
+    {
+      linkName: 'New Meal',
+      fragment: '/newMeal'
+    },
+    {
+      linkName: 'Results',
+      fragment: '/results'
+    }
   ]
 }

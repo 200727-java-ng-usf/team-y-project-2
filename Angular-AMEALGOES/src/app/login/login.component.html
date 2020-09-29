@@ -6,11 +6,11 @@
 <div id="login-container">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-group">
-            <label for="username">Username</label>
-            <input id="username" type="text" class="form-control" formControlName="username"/>
-            <div *ngIf="submitted && formFields.username.errors">
+            <label for="email">Email</label>
+            <input id="email" type="text" class="form-control" formControlName="email"/>
+            <div *ngIf="submitted && formFields.email.errors">
                 <br>
-                <p class="alert alert-danger">Username is required!</p>
+                <p class="alert alert-danger">Email is required!</p>
             </div>
         </div>
 
