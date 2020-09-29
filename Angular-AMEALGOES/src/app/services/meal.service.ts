@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment as env } from '../../environments/environment';
@@ -11,7 +12,16 @@ import { environment as env } from '../../environments/environment';
 })
 export class MealService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  private currentMealSubject: BehaviorSubject<number>
+  currentMeal$: Observable<number>
+
+  constructor(private http: HttpClient, private router: Router) { 
+
+    this.currentMealSubject = new BehaviorSubject<number>(0);
+    this.currentMeal$ = this.currentMealSubject.asObservable();
+
+  }
+  
 
   sendMeal(restaurantList: any) {
 
@@ -24,7 +34,9 @@ export class MealService {
       observe: 'response' // default is body (which refers to the body of the response)
     }).pipe(
       map(resp => {
-        if(resp.status == 200 || resp.status == 201) this.router.navigate(['/voteMeal']);
+        let currentMeal = resp.body as number;
+        this.currentMealSubject.next(currentMeal);
+        this.router.navigate(['/voteMeal']);
       })
     );
   }
@@ -32,20 +44,20 @@ export class MealService {
   joinMeal(mealCode: number) {
 
     console.log('in joinMeal()')
+    console.log(mealCode);
 
-
-    return this.http.post(`${env.API_URL}/meal`, mealCode, {
+    return this.http.post(`${env.API_URL}/meals/id/${mealCode}`, mealCode, {
       headers: {
         'Content-type': 'text/html'
       },
       observe: 'response'
     }).pipe(
       map(resp => {
-        if(resp.status == 200 || resp.status == 201) this.router.navigate(['/voteMeal']);
+        let currentMeal = resp.body as number;
+        this.currentMealSubject.next(currentMeal);
+        this.router.navigate(['/voteMeal']);
       })
-    );
+    )}
 
   
   }
-  
-}

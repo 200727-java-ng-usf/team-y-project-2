@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MealService } from '../services/meal.service';
 
 @Component({
   selector: 'app-join-meal',
@@ -7,13 +9,12 @@ import { FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./join-meal.component.css']
 })
 export class JoinMealComponent implements OnInit {
-  [x: string]: any;
 
 
   joinMealForm: FormGroup;
   submitted = false;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private mealService: MealService, private router: Router) { }
 
   ngOnInit(): void {
     this.joinMealForm = this.formBuilder.group({
@@ -22,14 +23,28 @@ export class JoinMealComponent implements OnInit {
   }
 
 
+  get formFields() {
+    return this.joinMealForm.controls;
+  }
+
   joinMeal(){
 
     this.submitted = true;
 
     if (this.joinMealForm.invalid) return;
 
-    // Uncomment when the service for connecting to the api is finished.
-    //this.mealService.joinMeal(this.formFields.id.value)
+    this.mealService.joinMeal(this.formFields.id.value)
+    .subscribe(
+      () => {
+        console.log('join-meal-successful');
+        console.log('Navigating to meal voting...');
+        // this.router.navigate(['/voteMeal']);
+      },
+      err => {
+        console.log(err);
+        this.submitted = false;
+      }
+    );
       
     
 
