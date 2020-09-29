@@ -27,8 +27,8 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  authenticate(username: string, password: string) {
-    let credentials = {username, password };
+  authenticate(email: string, password: string) {
+    let credentials = { email, password };
     return this.http.post(`${env.API_URL}/auth`, credentials, {
       headers: {
         'Content-Type': 'application/json'
