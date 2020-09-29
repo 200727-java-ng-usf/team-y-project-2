@@ -13,6 +13,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
 import { VoteMealComponent } from './vote-meal/vote-meal.component';
+import { ResultsComponent } from './results/results.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { VoteMealComponent } from './vote-meal/vote-meal.component';
     HomeComponent,
     NavComponent,
     CreateMealComponent,
-    VoteMealComponent
+    VoteMealComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

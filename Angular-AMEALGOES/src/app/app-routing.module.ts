@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
 import { HomeComponent } from './home/home.component';
 import { VoteMealComponent } from './vote-meal/vote-meal.component';
+import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -14,7 +15,11 @@ const routes: Routes = [
   { path: 'joinMeal', component: RegisterComponent },
   { path: '', component: LoginComponent },
   { path: 'voteMeal', component: VoteMealComponent},
+  { path: 'newMeal', component: CreateMealComponent },
+  { path: 'results', component: ResultsComponent },
+  { path: 'login', component: LoginComponent}
 ]
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

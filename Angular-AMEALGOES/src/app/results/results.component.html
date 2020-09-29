@@ -1,0 +1,23 @@
+<div id="page-container">
+   
+    <header id="page-header">Results 
+        <img id="burger-img" src="assets/burger.png"/>
+    </header>
+
+    <div id="results-container">
+
+        <div>
+            <p>Would you like to go to your home or create another 'meal'?</p>
+        </div>
+
+        <div class="navigate">
+            <button id="resultsNavigate" *ngFor="let link of authenticatedUserLinks" type="button" class="btn btn-primary"><a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a></button>        
+        </div>
+
+    </div>
+
+</div>
+
+
+
+

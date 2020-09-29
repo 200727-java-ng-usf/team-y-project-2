@@ -12,12 +12,13 @@ export class VoteMealComponent implements OnInit{
 
   currentResturant: number;
 
-  constructor(private mealService: MealService, private router: Router) { }
+  constructor(private mealService: MealService) { }
 
-  resturants = [];
+  resturants: String[] = [];
   
   async ngOnInit() {
-    let resturantList = <String[]> await this.mealService.getResturants();
+    //help
+    let resturantList = <String[]> <unknown> await this.mealService.getResturants();
     this.currentResturant = 0;
 
     for (let resturant of resturantList) {

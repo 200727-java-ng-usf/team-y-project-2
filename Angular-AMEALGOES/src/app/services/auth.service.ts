@@ -27,20 +27,20 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  // authenticate(username: string, password: string) {
-  //   let credentials = {username, password };
-  //   return this.http.post(`${env.API_URL}/auth`, credentials, {
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     observe: 'response'
-  //   }).pipe(
-  //     map(resp => {
-  //       let principal = resp.body as Principal;
-  //       this.currentUserSubject.next(principal);
-  //     })
-  //   );
-  // }
+  authenticate(username: string, password: string) {
+    let credentials = {username, password };
+    return this.http.post(`${env.API_URL}/auth`, credentials, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      observe: 'response'
+    }).pipe(
+      map(resp => {
+        let principal = resp.body as Principal;
+        this.currentUserSubject.next(principal);
+      })
+    );
+  }
 
   logout() {
     this.http.get(`${env.API_URL}/auth`);
