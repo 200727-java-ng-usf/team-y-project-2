@@ -7,16 +7,16 @@ import { environment as env } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MealService {
+export class RestaurantService {
 
   constructor(private http: HttpClient) { }
 
 
-  sendMeal(meal: any) {
+  sendMeal(restaurantList: any) {
 
     console.log('in sendMeal() service')
 
-    return this.http.post(`${env.API_URL}/meal`, meal,{
+    return this.http.post(`${env.API_URL}/restaurant`, restaurantList, {
       headers: {
         'Content-type': 'application/json'
       },

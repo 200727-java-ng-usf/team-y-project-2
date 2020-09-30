@@ -6,6 +6,14 @@
 
     <div id="newMeal-container">
       <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
+            <div class="form-group">
+                <label for="mealname">Meal name</label>
+                <input id="mealname" type="text" class="form-control" formControlName="mealname"/>
+                <!--<div *ngIf="submitted && formFields.meal-name.errors">-->
+                    <br>
+                    <p class="alert alert-danger">Meal name is required!</p>
+                </div>
+
             <!-- Area and validation handling -->
             <div class="form-group">
                 <label for="city">City</label>
@@ -15,7 +23,6 @@
             </select>
 
                 </div>
-            </div>
 
             <div class="form-group">
                 <button class="btn btn-primary">Submit</button>

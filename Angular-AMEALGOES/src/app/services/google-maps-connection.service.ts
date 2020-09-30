@@ -56,7 +56,7 @@ console.log('this is in fileDirectory '+FileDirectory);
       let restaurant = {
         name: nameInJSON,
         address:vicinityInJSON,
-        placeId:idInJSON
+        place:idInJSON
       }
 
       list[i] = restaurant;
