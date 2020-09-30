@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment as env } from '../../environments/environment';
+import { Principal } from '../models/principal';
 import { restaurant } from '../models/restaurant';
 
 
@@ -42,14 +43,15 @@ export class MealService {
     );
   }
 
-  joinMeal(mealCode: number) {
+  joinMeal(currentUser: Principal, mealCode: number) {
+
 
     console.log('in joinMeal()')
     console.log(mealCode);
 
-    return this.http.post(`${env.API_URL}/meals/id/${mealCode}`, mealCode, {
+    return this.http.post(`${env.API_URL}/meals/id/${mealCode}`, currentUser, {
       headers: {
-        'Content-type': 'text/html'
+        'Content-type': 'application/json'
       },
       observe: 'response'
     }).pipe(
