@@ -2,16 +2,10 @@
 
 
     <div>
-        <span *ngIf="resturants"> {{this.resturants.restaurants[this.currentResturant]}} </span>
+        <span *ngIf="resturants"> {{ this.currentResturant.name }} {{ this.currentResturant.address }} </span>
     </div>
-
     
-    <label for="yes_no_radio">Vote for this restaurant?</label>
-    <br>
-    <input name="yes_no" type="radio" id="yes" />
-        <label for="yes">Yes</label>
-    <input name="yes_no" type="radio" id="no"/>
-        <label for="no">No</label>
-        <br>
-    <button type="button" class="btn btn-primary" (click)="getNextResturant()">Next Restaurant</button>
+    <button type="button" class="btn btn-primary" (click)="getNextResturantVote()">Vote for this restaurant</button>
+    <button type="button" class="btn btn-primary" (click)="getNextResturantSkip()">Skip for this restaurant</button>
+    
 </div>
