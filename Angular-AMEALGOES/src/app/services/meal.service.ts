@@ -1,13 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-import { map } from 'rxjs/operators';
-
-=======
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
->>>>>>> 50f00c6060409c28a893c17445ab80e969758e10
 
 import { environment as env } from '../../environments/environment';
 import { restaurant } from '../models/restaurant';
@@ -18,12 +13,8 @@ import { restaurant } from '../models/restaurant';
 })
 export class MealService {
 
-<<<<<<< HEAD
-  constructor(private http: HttpClient, private router: Router) { }
-=======
   private currentMealSubject: BehaviorSubject<number>
   currentMeal$: Observable<number>
->>>>>>> 50f00c6060409c28a893c17445ab80e969758e10
 
   constructor(private http: HttpClient, private router: Router) { 
 
@@ -69,19 +60,15 @@ export class MealService {
       })
     )}
 
-  
-  }
-<<<<<<< HEAD
+    get currentMealValue() {
+      return this.currentMealSubject.value;
+    }
+
 
   async getResturants() {
-
-    this.http.get(`${env.API_URL}/meal`).subscribe(resp => 
-      {this.router.navigate(['/voteMeal']);
-      return resp
-    });
-
+    console.log(this.currentMealValue);
+    return await this.http.get(`${env.API_URL}/meals/id/${this.currentMealValue}`
+    ).toPromise();
   }
 
 }
-=======
->>>>>>> 50f00c6060409c28a893c17445ab80e969758e10

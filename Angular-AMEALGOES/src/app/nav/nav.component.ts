@@ -39,13 +39,12 @@ export class NavComponent{
       fragment: '/newMeal'
     },
     {
-<<<<<<< HEAD
       linkName: 'Vote Meal',
       fragment: '/voteMeal'
-=======
+    },
+    {
       linkName: 'Join Meal',
       fragment: '/joinMeal'
->>>>>>> 50f00c6060409c28a893c17445ab80e969758e10
     },
     {
       linkName: 'Results',

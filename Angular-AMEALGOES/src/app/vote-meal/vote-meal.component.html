@@ -1,8 +1,9 @@
 <div id="page-container">
 
 
-
-
+    <div>
+        <span *ngIf="resturants"> {{this.resturants.restaurants[this.currentResturant]}} </span>
+    </div>
 
     
     <label for="yes_no_radio">Vote for this restaurant?</label>

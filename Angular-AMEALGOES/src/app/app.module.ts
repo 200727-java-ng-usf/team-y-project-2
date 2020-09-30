@@ -12,11 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
-<<<<<<< HEAD
 import { VoteMealComponent } from './vote-meal/vote-meal.component';
-=======
 import { JoinMealComponent } from './join-meal/join-meal.component';
->>>>>>> 50f00c6060409c28a893c17445ab80e969758e10
 import { ResultsComponent } from './results/results.component';
 
 
@@ -28,11 +25,8 @@ import { ResultsComponent } from './results/results.component';
     HomeComponent,
     NavComponent,
     CreateMealComponent,
-<<<<<<< HEAD
     VoteMealComponent,
-=======
     JoinMealComponent,
->>>>>>> 50f00c6060409c28a893c17445ab80e969758e10
     ResultsComponent
   ],
   imports: [

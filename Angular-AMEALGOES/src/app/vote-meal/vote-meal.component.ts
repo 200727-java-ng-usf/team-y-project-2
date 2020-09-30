@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { restaurant } from '../models/restaurant';
+import { meal } from '../models/meal';
 import { MealService } from '../services/meal.service';
 
 @Component({
@@ -11,19 +11,17 @@ import { MealService } from '../services/meal.service';
 export class VoteMealComponent implements OnInit{
 
   currentResturant: number;
+  resturants: meal;
 
   constructor(private mealService: MealService) { }
 
-  resturants: String[] = [];
   
-  async ngOnInit() {
-    //help
-    let resturantList = <String[]> <unknown> await this.mealService.getResturants();
-    this.currentResturant = 0;
 
-    for (let resturant of resturantList) {
-      this.resturants.push(resturant);
-    }
+  async ngOnInit() {
+    this.resturants = <meal> await this.mealService.getResturants();
+    this.currentResturant = 0;
+    
+    
 
   }
   
@@ -31,7 +29,11 @@ export class VoteMealComponent implements OnInit{
   getNextResturant() {
     this.currentResturant++;
     
-    return this.resturants[this.currentResturant];
+    if (this.resturants.restaurants[this.currentResturant] != null) {
+      return this.resturants.restaurants[this.currentResturant];
+    } else {
+      //voting done?
+    }
     
     
   }
