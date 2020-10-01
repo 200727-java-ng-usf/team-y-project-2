@@ -2,5 +2,4 @@
     <div id="home-container">
         <button *ngFor="let link of authenticatedUserLinks" type="button" class="btn btn-primary"><a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a></button>
 	</div>
-	<app-like></app-like>
 </div>
