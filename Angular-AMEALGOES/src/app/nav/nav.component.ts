@@ -39,6 +39,14 @@ export class NavComponent{
       fragment: '/newMeal'
     },
     {
+      linkName: 'Vote Meal',
+      fragment: '/voteMeal'
+    },
+    {
+      linkName: 'Join Meal',
+      fragment: '/joinMeal'
+    },
+    {
       linkName: 'Results',
       fragment: '/results'
     }
