@@ -39,63 +39,143 @@ export class VoteMealComponent implements OnInit{
   
 
   getNextResturantVote() {
-    
-    let vote: Vote = {
-      restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
-      meal: this.meal.id, //meal id, get meal from api via id
-      user: this.authService.currentUserValue.id, //user id
-      vote: 1
-    }
-    this.voteCount--
 
-    this.voteService.sendVote(vote)
-    .subscribe(
-      () => {
-        console.log('vote-successful');
-      },
-      err => {
-        console.log(err);
+    if (this.meal.restaurants[this.currentResturantInt] != undefined && this.voteCount != 1){
+      let vote: Vote = {
+        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
+        meal: this.meal.id, //meal id, get meal from api via id
+        user: this.authService.currentUserValue.id, //user id
+        vote: 1
       }
-    );
-
-    if (this.meal.restaurants[this.currentResturantInt] != null) {
+      
+      this.voteService.sendVote(vote)
+      .subscribe(
+        () => {
+          console.log('vote-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  
+      this.voteCount--
       this.currentResturantInt++;
       return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
-    } else if (this.voteCount == 0) {
-      //voting done?
+
+
+
+    } else if (this.voteCount == 1) {
+      let vote = {
+        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
+        meal: this.meal.id, //meal id, get meal from api via id
+        user: this.authService.currentUserValue.id, //user id
+        vote: 1 //0 or 1
+      }
+      
+      this.voteService.sendVote(vote)
+      .subscribe(
+        () => {
+          console.log('vote-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
+
+      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
+      .subscribe(
+        () => {
+          console.log('voted-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
     } else {
-      //voting done?
+      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
+      .subscribe(
+        () => {
+          console.log('voted-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
+
     
+    
+
+
   }
 
   getNextResturantSkip() {
     
-    let vote = {
-      restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
-      meal: this.meal.id, //meal id, get meal from api via id
-      user: this.authService.currentUserValue.id, //user id
-      vote: 0 //0 or 1
-    }
-    
-    this.voteService.sendVote(vote)
-    .subscribe(
-      () => {
-        console.log('vote-successful');
-      },
-      err => {
-        console.log(err);
+    if (this.meal.restaurants[this.currentResturantInt] != undefined && this.voteCount != 1) {
+      let vote = {
+        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
+        meal: this.meal.id, //meal id, get meal from api via id
+        user: this.authService.currentUserValue.id, //user id
+        vote: 0 //0 or 1
       }
-    );
 
-    if (this.meal.restaurants[this.currentResturantInt] != null) {
+      this.voteService.sendVote(vote)
+      .subscribe(
+        () => {
+          console.log('vote-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
+  
+      this.voteCount--
       this.currentResturantInt++;
       return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
-    } else if (this.voteCount == 0) {
-      //voting done?
+
+
+    } else if (this.voteCount == 1) {
+      let vote = {
+        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
+        meal: this.meal.id, //meal id, get meal from api via id
+        user: this.authService.currentUserValue.id, //user id
+        vote: 0 //0 or 1
+      }
+
+      this.voteService.sendVote(vote)
+      .subscribe(
+        () => {
+          console.log('vote-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
+
+      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
+      .subscribe(
+        () => {
+          console.log('vote-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
     } else {
-      //voting done?
+      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
+      .subscribe(
+        () => {
+          console.log('vote-successful');
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
+
+    
+
+  
     
   }
 

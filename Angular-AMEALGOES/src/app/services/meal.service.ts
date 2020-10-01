@@ -13,6 +13,7 @@ import { restaurant } from '../models/restaurant';
   providedIn: 'root'
 })
 export class MealService {
+  
 
   private currentMealSubject: BehaviorSubject<number>
   currentMeal$: Observable<number>
@@ -65,7 +66,7 @@ export class MealService {
     get currentMealValue() {
       return this.currentMealSubject.value;
     }
-
+  
 
   async getResturants() {
     console.log(this.currentMealValue);
@@ -73,4 +74,17 @@ export class MealService {
     ).toPromise();
   }
 
-}
+  votingDone(currentUser: Principal, mealCode: number) {
+    return this.http.post(`${env.API_URL}/meals/voted/id/${mealCode}`, currentUser, {
+      headers: {
+        'Content-type': 'application/json'
+      },
+      observe: 'response'
+    }).pipe(
+      map(resp => {
+        // let currentMeal = resp.body as number; GET FINAL MEAL
+        // this.currentMealSubject.next(currentMeal);
+        // this.router.navigate(['/voteMeal']); NAV TO FINAL MEAL PAGE
+      })
+    )}
+  }

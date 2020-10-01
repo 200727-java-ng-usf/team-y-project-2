@@ -5,5 +5,7 @@ export class meal {
     numVotes: number;
     finalRestaurant: String;
     restaurants: restaurant[];
-    voted: String;
+    usersInMeal: String;
+    usersFinishedVoting: String[];
+
 }
