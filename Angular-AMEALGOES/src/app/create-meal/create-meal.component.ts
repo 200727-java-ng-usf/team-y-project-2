@@ -5,6 +5,7 @@ import { MealService } from '../services/meal.service';
 import { GoogleMapsConnectionService } from '../services/google-maps-connection.service';
 import { map } from 'rxjs/operators';
 import { RestaurantService } from '../services/restaurant.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-create-meal',
@@ -16,7 +17,7 @@ export class CreateMealComponent implements OnInit {
   newMealForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private mealService: MealService, private restaurantService: RestaurantService, private router: Router) { 
+  constructor(private formBuilder: FormBuilder, private mealService: MealService, private restaurantService: RestaurantService, private router: Router, private authService: AuthService) { 
 
   }
 
@@ -64,26 +65,42 @@ export class CreateMealComponent implements OnInit {
       "mealName" : mealName,
       "numVotes" : numVotes,
       "restaurants" : restaurants
-     
+    
     }
 
     console.log("Stringified meal " + JSON.stringify(meal));
     
 
-    let mealId = await this.mealService.sendMeal(meal).then(resp2 => { return resp2});
+    let mealId = await this.mealService.sendMeal(meal).then(resp2 => {
+      
+      return resp2;
+      
+      });
 
-
+      this.joinMeal(mealId)
     //await this.restaurantService.sendRestaurantList(restaurants);//works!!
 
-    //console.log("after sent restaurants");
+  }
+
+  joinMeal(mealId: number){
+
+    this.submitted = true;
+
+    this.mealService.joinMeal(this.authService.currentUserValue, mealId)
+    .subscribe(
+      () => {
+        console.log('join-meal-successful');
+        console.log('Navigating to meal voting...');
+        this.router.navigate(['/voteMeal']);
+      },
+      err => {
+        console.log(err);
+        this.submitted = false;
+      }
+    );
+      
     
 
-    console.log("meal created mealId " + mealId);//works!!
-
-
-
-    // Uncomment when the service for connecting to the api is finished.
-    // this.mealService.beginMeal(this.formFields.zip.value)
   }
 
 }

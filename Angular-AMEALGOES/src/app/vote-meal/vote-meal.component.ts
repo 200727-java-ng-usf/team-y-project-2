@@ -48,15 +48,8 @@ export class VoteMealComponent implements OnInit{
         vote: 1
       }
       
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      this.voteService.sendVote(vote);
+    
   
       this.voteCount--
       this.currentResturantInt++;
@@ -72,16 +65,8 @@ export class VoteMealComponent implements OnInit{
         vote: 1 //0 or 1
       }
       
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-
+      this.voteService.sendVote(vote);
+      //take you to a waiting page?
       this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
       .subscribe(
         () => {
@@ -119,15 +104,7 @@ export class VoteMealComponent implements OnInit{
         vote: 0 //0 or 1
       }
 
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      this.voteService.sendVote(vote);
   
       this.voteCount--
       this.currentResturantInt++;
@@ -142,15 +119,7 @@ export class VoteMealComponent implements OnInit{
         vote: 0 //0 or 1
       }
 
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      this.voteService.sendVote(vote);
 
       this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
       .subscribe(
