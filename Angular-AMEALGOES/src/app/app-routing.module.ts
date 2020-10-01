@@ -10,15 +10,15 @@ import { JoinMealComponent } from './join-meal/join-meal.component';
 import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'newMeal', component: CreateMealComponent },
-  { path: 'joinmeal', component: JoinMealComponent },
-  { path: '', component: LoginComponent },
+  { path: 'createmeal', component: RegisterComponent },
+  { path: 'joinmeal', component: RegisterComponent },
   { path: 'voteMeal', component: VoteMealComponent},
   { path: 'newMeal', component: CreateMealComponent },
-  { path: 'results', component: ResultsComponent },
-  { path: 'login', component: LoginComponent}
+  { path: 'results', component: ResultsComponent }
 ]
 
 @NgModule({
