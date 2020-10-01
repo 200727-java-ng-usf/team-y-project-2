@@ -15,6 +15,7 @@ import { CreateMealComponent } from './create-meal/create-meal.component';
 import { VoteMealComponent } from './vote-meal/vote-meal.component';
 import { JoinMealComponent } from './join-meal/join-meal.component';
 import { ResultsComponent } from './results/results.component';
+import { UserLikesComponent } from './user-likes/user-likes.component';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { ResultsComponent } from './results/results.component';
     CreateMealComponent,
     VoteMealComponent,
     JoinMealComponent,
-    ResultsComponent
+    ResultsComponent,
+    UserLikesComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -26,11 +26,13 @@ export class MealService {
   }
   
 
-  sendMeal(restaurantList: any) {
+  sendMeal(meal: any) {
+
 
     console.log('in sendMeal() service')
+    console.log(`${env.API_URL}/meals`);
 
-    return this.http.post(`${env.API_URL}/meal`, restaurantList, {
+    return this.http.post(`${env.API_URL}/meals`, meal,{
       headers: {
         'Content-type': 'application/json'
       },
