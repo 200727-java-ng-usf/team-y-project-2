@@ -42,8 +42,9 @@ export class MealService {
         let currentMeal = resp.body as number;
         this.currentMealSubject.next(currentMeal);
         this.router.navigate(['/voteMeal']);
+        return currentMeal;
       })
-    );
+    ).toPromise()
   }
 
   joinMeal(currentUser: Principal, mealCode: number) {
