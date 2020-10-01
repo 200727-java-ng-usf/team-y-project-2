@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment as env } from '../../environments/environment';
+import { meal } from '../models/meal';
 import { Principal } from '../models/principal';
 import { restaurant } from '../models/restaurant';
 
@@ -13,6 +14,8 @@ import { restaurant } from '../models/restaurant';
   providedIn: 'root'
 })
 export class MealService {
+  
+
   
 
   private currentMealSubject: BehaviorSubject<number>
@@ -90,14 +93,13 @@ export class MealService {
         // this.router.navigate(['/voteMeal']); NAV TO FINAL MEAL PAGE
       })
     )}
-  }
-<<<<<<< HEAD
+  
 
-  retrieveWinningRestauarant() {
+  async retrieveWinningRestauarant() {
     console.log('in retrieveWinningRestaurant() in meal service')
 
-    return this.http.get(`${env.API_URL}/meal`);
+    return await this.http.get(`${env.API_URL}/meals/results/${this.currentMealValue}`
+    ).toPromise();
   }
 }
-=======
->>>>>>> 82e55410fc4ceb6d93c52313a4e510b28dca63f3
+

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { meal } from '../models/meal';
+import { restaurant } from '../models/restaurant';
 import { MealService } from '../services/meal.service';
 
 @Component({
@@ -8,10 +10,16 @@ import { MealService } from '../services/meal.service';
 })
 export class ResultsComponent implements OnInit {
 
+  currentResturantInt: number;
+  meal: meal;
+  currentResturant: restaurant;
+  
+
   constructor(private mealService: MealService) { }
 
-  ngOnInit(): void {
-    this.getWinner();
+  async ngOnInit(): Promise<void> {
+    this.meal = <meal> await this.mealService.retrieveWinningRestauarant();
+    this.currentResturantInt = 0;
   }
 
   authenticatedUserLinks = [
@@ -24,11 +32,5 @@ export class ResultsComponent implements OnInit {
       fragment: '/newMeal'
     }
   ]
-
-  getWinner() {
-    console.log('In getWinner()');
-
-    this.mealService.retrieveWinningRestauarant();
-  }
 
 }
