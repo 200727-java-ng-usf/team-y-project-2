@@ -20,6 +20,7 @@ export class MealService {
 
   private currentMealSubject: BehaviorSubject<number>
   currentMeal$: Observable<number>
+  mealCode: number
 
   constructor(private http: HttpClient, private router: Router) { 
 
@@ -95,11 +96,11 @@ export class MealService {
     )}
   
 
-  async retrieveWinningRestauarant() {
-    console.log('in retrieveWinningRestaurant() in meal service')
+  async retrieveWinningRestauarant(mealCode : number) {
 
-    return await this.http.get(`${env.API_URL}/meals/results/${this.currentMealValue}`
-    ).toPromise();
+    console.log('in retrieveWinningRestaurant() in meal service')
+    return await this.http.get(`${env.API_URL}/meals/results/${mealCode}`)
+    .toPromise();
   }
 }
 

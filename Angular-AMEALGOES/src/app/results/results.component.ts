@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { meal } from '../models/meal';
-import { restaurant } from '../models/restaurant';
+import { result } from '../models/results';
 import { MealService } from '../services/meal.service';
 
 @Component({
@@ -10,17 +9,17 @@ import { MealService } from '../services/meal.service';
 })
 export class ResultsComponent implements OnInit {
 
-  currentResturantInt: number;
-  meal: meal;
-  currentResturant: restaurant;
+  result: result;
+  mealCode: number;
   
 
   constructor(private mealService: MealService) { }
 
   async ngOnInit(): Promise<void> {
-    this.meal = <meal> await this.mealService.retrieveWinningRestauarant();
-    this.currentResturantInt = 0;
+    this.result = <result> await this.mealService.retrieveWinningRestauarant(6);
   }
+
+  
 
   authenticatedUserLinks = [
     {
