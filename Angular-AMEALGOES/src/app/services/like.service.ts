@@ -1,11 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
-import { Principal } from '../models/principal';
-import { map } from 'rxjs/operators';
 
 import { environment as env } from '../../environments/environment';
-import { BehaviorSubject } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -13,16 +9,36 @@ import { AuthService } from './auth.service';
 })
 export class LikeService {
 
-  constructor(private authService: AuthService, private http: HttpClient) { }
+  private restaurant_id: string;
 
-  like(liked : boolean) {
-    // TODO create post method in backend 
-    // let info = { this.authService.currentUserValue, restaurant };
-    return this.http.post(`${env.API_URL}/users/likes`, liked, {
+  constructor(private authService: AuthService, private http: HttpClient) {
+    this.setCurrentRestaurant("qwiory");
+   }
+
+  like() {
+    let user_id = this.authService.currentUserValue.id;
+    let restaurant_place_id = this.restaurant_id;
+    let userLike = { user_id, restaurant_place_id };
+    console.log(userLike);
+    
+    return this.http.post(`${env.API_URL}/users/likes`, userLike, {
       headers: {
         'Content-Type': 'application/json'
       }
-    });
+    }).toPromise();
+  }
+
+  isLiked() {
+    let userId = this.authService.currentUserValue.id;
+    let rest_vote = this.restaurant_id;
+    console.log(userId);
+    console.log(rest_vote);
     
+    
+    return this.http.get(`${env.API_URL}/users/${userId}/likes/${rest_vote}`).toPromise();
+  }
+
+  setCurrentRestaurant(new_restaurant_id: string) {
+    this.restaurant_id = new_restaurant_id;
   }
 }
