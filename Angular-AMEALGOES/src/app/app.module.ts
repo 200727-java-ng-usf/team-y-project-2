@@ -13,6 +13,7 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
 import { ResultsComponent } from './results/results.component';
+import { LikeComponent } from './like/like.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ResultsComponent } from './results/results.component';
     HomeComponent,
     NavComponent,
     CreateMealComponent,
-    ResultsComponent
+    ResultsComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,

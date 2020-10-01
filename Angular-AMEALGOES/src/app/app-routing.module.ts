@@ -8,11 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'createmeal', component: RegisterComponent },
   { path: 'joinmeal', component: RegisterComponent },
-  { path: '', component: LoginComponent },
   { path: 'newMeal', component: CreateMealComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'login', component: LoginComponent}
