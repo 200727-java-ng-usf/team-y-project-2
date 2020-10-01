@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MealService } from '../services/meal.service';
 
 @Component({
   selector: 'app-results',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mealService: MealService) { }
 
   ngOnInit(): void {
+    this.getWinner();
   }
 
   authenticatedUserLinks = [
@@ -22,5 +24,11 @@ export class ResultsComponent implements OnInit {
       fragment: '/newMeal'
     }
   ]
+
+  getWinner() {
+    console.log('In getWinner()');
+
+    this.mealService.retrieveWinningRestauarant();
+  }
 
 }
