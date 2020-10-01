@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Angular-AMEALGOES"
+    }
+  },
+  "defaultProject": "Angular-AMEALGOES",
+  "cli": {
+    "analytics": false
+  }
 }
