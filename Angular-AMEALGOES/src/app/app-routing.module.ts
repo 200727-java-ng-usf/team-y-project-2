@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'createmeal', component: RegisterComponent },
-  { path: 'joinmeal', component: RegisterComponent },
+  { path: 'createmeal', component: CreateMealComponent },
+  { path: 'joinMeal', component: JoinMealComponent },
   { path: 'voteMeal', component: VoteMealComponent},
   { path: 'newMeal', component: CreateMealComponent },
   { path: 'results', component: ResultsComponent }
