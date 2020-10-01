@@ -15,6 +15,7 @@ import { CreateMealComponent } from './create-meal/create-meal.component';
 import { VoteMealComponent } from './vote-meal/vote-meal.component';
 import { JoinMealComponent } from './join-meal/join-meal.component';
 import { ResultsComponent } from './results/results.component';
+import { LikeComponent } from './like/like.component';
 import { UserLikesComponent } from './user-likes/user-likes.component';
 
 
@@ -29,8 +30,8 @@ import { UserLikesComponent } from './user-likes/user-likes.component';
     VoteMealComponent,
     JoinMealComponent,
     ResultsComponent,
+    LikeComponent,
     UserLikesComponent
-    
   ],
   imports: [
     BrowserModule,
