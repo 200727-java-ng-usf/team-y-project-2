@@ -2,7 +2,7 @@
 
 
     <div>
-        <span *ngIf="resturants"> {{ this.currentResturant.name }} {{ this.currentResturant.address }} </span>
+        <span *ngIf="meal"> {{ this.currentResturant.name }} {{ this.currentResturant.address }} </span>
     </div>
     
     <button type="button" class="btn btn-primary" (click)="getNextResturantVote()">Vote for this restaurant</button>
