@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMealComponent } from './create-meal/create-meal.component';
+import { VoteMealComponent } from './vote-meal/vote-meal.component';
+import { JoinMealComponent } from './join-meal/join-meal.component';
 import { ResultsComponent } from './results/results.component';
 import { UserLikesComponent } from './user-likes/user-likes.component';
 
@@ -24,8 +26,11 @@ import { UserLikesComponent } from './user-likes/user-likes.component';
     HomeComponent,
     NavComponent,
     CreateMealComponent,
+    VoteMealComponent,
+    JoinMealComponent,
     ResultsComponent,
     UserLikesComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class HomeComponent {
   authenticatedUserLinks = [
     {
       linkName: 'Create Meal',
-      fragment: '/createmeal'
+      fragment: '/newMeal'
     },
     {
       linkName: 'Join Meal',
