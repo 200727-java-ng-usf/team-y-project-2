@@ -6,8 +6,11 @@ import { Router } from '@angular/router';
 import { meal } from '../models/meal';
 import { restaurant } from '../models/restaurant';
 import { Vote } from '../models/vote';
+import { votestatus } from '../models/votestatus';
 import { AuthService } from '../services/auth.service';
+import { LikeService } from '../services/like.service';
 import { MealService } from '../services/meal.service';
+import { MessageService } from '../services/message.service';
 import { VoteService } from '../services/vote.service';
 
 @Component({
@@ -16,15 +19,20 @@ import { VoteService } from '../services/vote.service';
   styleUrls: ['./vote-meal.component.css']
 })
 export class VoteMealComponent implements OnInit{
+  [x: string]: any;
 
   currentResturantInt: number;
   meal: meal;
   currentResturant: restaurant;
   voteCount: number;
+  mealid: number;
 
   
 
-  constructor(private mealService: MealService, private authService: AuthService, private voteService: VoteService) { }
+  constructor(private mealService: MealService, private authService: AuthService, 
+    private voteService: VoteService, private messageService: MessageService, private router: Router, private likeService: LikeService) {
+      
+    }
 
   
 
@@ -33,14 +41,26 @@ export class VoteMealComponent implements OnInit{
     this.currentResturantInt = 0;
     this.currentResturant = this.meal.restaurants[this.currentResturantInt];
     this.voteCount = this.meal.numVotes;
-    console.log(this.currentResturant);
+    
+    this.likeService.setCurrentRestaurant(this.currentResturant.place);
 
+
+    this.messageService.stompClient.subscribe('/vote-message', (message) => {
+      let voteStatus = JSON.parse(message.body);
+      console.log(message.body);
+      console.log(votestatus);
+      console.log('IM SUBSCRIBED');
+      console.log(voteStatus.mealVotingFinished);
+      this.mealService.mealCode = voteStatus.mealId;
+    if (voteStatus.mealVotingFinished == 1) {
+      this.router.navigate(['/results']);
+    }
+    });
   }
   
 
   getNextResturantVote() {
-
-    if (this.meal.restaurants[this.currentResturantInt] != undefined && this.voteCount != 1){
+    // this.likeService.setCurrentRestaurant(this.currentResturant.place);
       let vote: Vote = {
         restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
         meal: this.meal.id, //meal id, get meal from api via id
@@ -48,70 +68,19 @@ export class VoteMealComponent implements OnInit{
         vote: 1
       }
       
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      this.voteService.sendVote(vote);
+    
   
       this.voteCount--
       this.currentResturantInt++;
-      return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
-
-
-
-    } else if (this.voteCount == 1) {
-      let vote = {
-        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
-        meal: this.meal.id, //meal id, get meal from api via id
-        user: this.authService.currentUserValue.id, //user id
-        vote: 1 //0 or 1
-      }
+      this.currentResturant = this.meal.restaurants[this.currentResturantInt];
+      console.log(this.currentResturant.place);
       
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('voted-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    } else {
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('voted-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }
-
-    
-    
-
-
+      return this.currentResturant;
   }
 
   getNextResturantSkip() {
-    
-    if (this.meal.restaurants[this.currentResturantInt] != undefined && this.voteCount != 1) {
+  
       let vote = {
         restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
         meal: this.meal.id, //meal id, get meal from api via id
@@ -119,58 +88,13 @@ export class VoteMealComponent implements OnInit{
         vote: 0 //0 or 1
       }
 
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      this.voteService.sendVote(vote);
   
       this.voteCount--
       this.currentResturantInt++;
-      return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
-
-
-    } else if (this.voteCount == 1) {
-      let vote = {
-        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
-        meal: this.meal.id, //meal id, get meal from api via id
-        user: this.authService.currentUserValue.id, //user id
-        vote: 0 //0 or 1
-      }
-
-      this.voteService.sendVote(vote)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    } else {
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
+      this.currentResturant = this.meal.restaurants[this.currentResturantInt];
+      // this.likeService.setCurrentRestaurant(this.currentResturant.place);
+      return this.currentResturant;
     }
 
     
@@ -178,7 +102,3 @@ export class VoteMealComponent implements OnInit{
   
     
   }
-
-
-
-}

@@ -16,7 +16,7 @@ export class ResultsComponent implements OnInit {
   constructor(private mealService: MealService) { }
 
   async ngOnInit(): Promise<void> {
-    this.result = <result> await this.mealService.retrieveWinningRestauarant(6);
+    this.result = <result> await this.mealService.retrieveWinningRestauarant();
   }
 
   
