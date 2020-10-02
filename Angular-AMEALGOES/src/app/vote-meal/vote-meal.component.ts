@@ -55,8 +55,6 @@ export class VoteMealComponent implements OnInit{
   
 
   getNextResturantVote() {
-
-    if (this.meal.restaurants[this.currentResturantInt] != undefined && this.voteCount != 1){
       let vote: Vote = {
         restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
         meal: this.meal.id, //meal id, get meal from api via id
@@ -70,28 +68,11 @@ export class VoteMealComponent implements OnInit{
       this.voteCount--
       this.currentResturantInt++;
       return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
-    } else {
-      let vote = {
-        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
-        meal: this.meal.id, //meal id, get meal from api via id
-        user: this.authService.currentUserValue.id, //user id
-        vote: 0 //0 or 1
-      }
-
-      this.voteService.sendVote(vote);
-  
-      this.voteCount--
-    }
-
-    
-    
-
 
   }
 
   getNextResturantSkip() {
     
-    if (this.meal.restaurants[this.currentResturantInt] != undefined && this.voteCount != 1) {
       let vote = {
         restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
         meal: this.meal.id, //meal id, get meal from api via id
@@ -105,18 +86,6 @@ export class VoteMealComponent implements OnInit{
       this.currentResturantInt++;
       return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
 
-    } else {
-      let vote = {
-        restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
-        meal: this.meal.id, //meal id, get meal from api via id
-        user: this.authService.currentUserValue.id, //user id
-        vote: 0 //0 or 1
-      }
-
-      this.voteService.sendVote(vote);
-  
-      this.voteCount--
-
     }
 
     
@@ -124,7 +93,3 @@ export class VoteMealComponent implements OnInit{
   
     
   }
-
-
-
-}
