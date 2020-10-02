@@ -1,9 +1,34 @@
 <div id="page-container">
-    <header id="page-header">Login Page 
+    <header id="page-header">User Likes 
         <img id="burger-img" src="assets/burger.png"/>
     </header>
 
-<div id="likes-container">
+<div id="user-likes-container">
+
+    <table class="table" id="user-likes-table"></table>
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let restaurant of restaurants">
+        <td>{{restaurant.name}}</td>
+        <td>{{restaurant.address}}</td>
+      </tr>
+    </tbody>
+    
+    <!-- <th *ngFor = "let column of headers">
+        {{column}}
+      </th>
+
+    <tr *ngFor = "let row of rows">
+        <td *ngFor = "let column of headers">
+          {{row[column]}}
+        </td>
+      </tr> -->
 
 </div>
 </div>

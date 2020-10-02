@@ -39,6 +39,10 @@ export class NavComponent implements OnDestroy {
     {
       linkName: 'Join Meal',
       fragment: '/joinMeal'
+    },
+    {
+      linkName: 'User Likes',
+      fragment: '/userlikes'
     }
   ]
 
