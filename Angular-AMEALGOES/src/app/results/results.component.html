@@ -7,6 +7,10 @@
     <div id="results-container">
 
         <div>
+            <span *ngIf="result"> {{ this.result.restaurant_name }} - {{ this.result.address }} </span>
+        </div>
+
+        <div>
             <p>Would you like to go to your home or create another 'meal'?</p>
         </div>
 
