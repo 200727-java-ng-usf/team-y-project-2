@@ -14,14 +14,19 @@ export class LikeComponent implements OnInit {
   liked = false;
 
   ngOnInit(): void {
-    // TODO, in holding component, set liked to user preference.
     this.setUpLike();
   }
 
   async setUpLike() {
+    this.image = "assets/giphy.gif";
     await this.likeService.isLiked().then(
-      (liked) => {
-        if (liked) this.setLiked();
+      (like : boolean) => {
+        this.liked = like;
+        if (this.liked) {
+          this.image = "assets/icons8-filled-heart-512.png";
+        } else {
+          this.image = "assets/icons8-heart-512.png";
+        }
       }
     )
   }
@@ -32,16 +37,14 @@ export class LikeComponent implements OnInit {
   }
 
   async toggleLike(){
-    // TODO notify server that this user has liked/disliked holding component.
+    this.image = "assets/giphy.gif";
     await this.likeService.like()
-      .then((success) => {
-        if (success) {
-          this.liked = !this.liked;
-          if (this.liked) {
-            this.image = "assets/icons8-filled-heart-512.png";
-          } else {
-            this.image = "assets/icons8-heart-512.png";
-          }
+      .then((like : boolean) => {
+        this.liked = like;
+        if (this.liked) {
+          this.image = "assets/icons8-filled-heart-512.png";
+        } else {
+          this.image = "assets/icons8-heart-512.png";
         }
       }
     );

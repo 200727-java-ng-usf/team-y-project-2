@@ -8,17 +8,19 @@ import { HomeComponent } from './home/home.component';
 import { VoteMealComponent } from './vote-meal/vote-meal.component';
 import { JoinMealComponent } from './join-meal/join-meal.component';
 import { ResultsComponent } from './results/results.component';
+import { UserLikesComponent } from './user-likes/user-likes.component'
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'createmeal', component: RegisterComponent },
-  { path: 'joinmeal', component: RegisterComponent },
+  { path: 'createmeal', component: CreateMealComponent },
+  { path: 'joinMeal', component: JoinMealComponent },
   { path: 'voteMeal', component: VoteMealComponent},
   { path: 'newMeal', component: CreateMealComponent },
-  { path: 'results', component: ResultsComponent }
+  { path: 'results', component: ResultsComponent },
+  { path: 'userlikes', component: UserLikesComponent }
 ]
 
 @NgModule({

@@ -9,11 +9,12 @@ import { AuthService } from './auth.service';
 })
 export class LikeService {
 
-  private restaurant_id: string;
+  private restaurant_id: number = 1;
 
   constructor(private authService: AuthService, private http: HttpClient) {
-    this.setCurrentRestaurant("qwiory");
-   }
+  }
+
+  
 
   like() {
     let user_id = this.authService.currentUserValue.id;
@@ -38,7 +39,19 @@ export class LikeService {
     return this.http.get(`${env.API_URL}/users/${userId}/likes/${rest_vote}`).toPromise();
   }
 
-  setCurrentRestaurant(new_restaurant_id: string) {
+  setCurrentRestaurant(new_restaurant_id: number) {
+    console.log(new_restaurant_id);
     this.restaurant_id = new_restaurant_id;
+  }
+
+  getLikes(){
+    //let userId = this.authService.currentUserValue.id;
+    let userId = this.authService.currentUserValue.id;
+    console.log(userId);
+    
+    console.log("endpoint " + `${env.API_URL}users/${userId}/likes`);
+    console.log("endpoint " + `${env.API_URL}users/likes`);
+    return this.http.get(`${env.API_URL}users/id/${userId}/likes`).toPromise();
+    //return this.http.get(`${env.API_URL}users/likes`).toPromise();
   }
 }

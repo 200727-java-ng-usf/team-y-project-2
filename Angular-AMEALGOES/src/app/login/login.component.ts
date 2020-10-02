@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
     console.log('These are the entered values:');
     console.log(`Email: ${ email }`);
-    console.log(`Password: ${ password }`);
+    // console.log(`Password: ${ password }`);
 
     if (this.loginForm.invalid) return;
 

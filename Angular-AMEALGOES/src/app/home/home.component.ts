@@ -17,7 +17,7 @@ export class HomeComponent {
     },
     {
       linkName: 'Join Meal',
-      fragment: '/joinmeal'
+      fragment: '/joinMeal'
     }
   ]
 
