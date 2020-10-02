@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LikeService } from '../services/like.service';
 
 @Component({
   selector: 'app-user-likes',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLikesComponent implements OnInit {
 
-  constructor() { }
+  restaurants:Array<any>;
+
+  constructor(private likeService:LikeService) {
+    this.getLikes();
+
+   }
 
   ngOnInit(): void {
+
   }
+
+  async getLikes(){
+    this.restaurants = <Array<any>> await this.likeService.getLikes().then(resp2 => {console.log("restaurants in constructor " + resp2);
+    return resp2});
+    
+  }
+
+
+
+
 
 }

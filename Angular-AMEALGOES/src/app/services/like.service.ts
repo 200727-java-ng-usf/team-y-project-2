@@ -41,4 +41,13 @@ export class LikeService {
   setCurrentRestaurant(new_restaurant_id: string) {
     this.restaurant_id = new_restaurant_id;
   }
+
+  getLikes(){
+    //let userId = this.authService.currentUserValue.id;
+    let userId = 1;
+    console.log(userId);
+    
+    console.log("endpoint " + `${env.API_URL}users/${userId}/likes`);
+    return this.http.get(`${env.API_URL}users/id/${userId}/likes`).toPromise();
+  }
 }
