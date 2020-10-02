@@ -12,7 +12,7 @@ import { MessageService } from './message.service';
 })
 export class VoteService {
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService, private messageService: MessageService) { 
+  constructor(private messageService: MessageService) { 
   }
 
   voteCount: number = 0;

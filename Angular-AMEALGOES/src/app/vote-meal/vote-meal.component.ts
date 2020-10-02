@@ -6,8 +6,10 @@ import { Router } from '@angular/router';
 import { meal } from '../models/meal';
 import { restaurant } from '../models/restaurant';
 import { Vote } from '../models/vote';
+import { votestatus } from '../models/votestatus';
 import { AuthService } from '../services/auth.service';
 import { MealService } from '../services/meal.service';
+import { MessageService } from '../services/message.service';
 import { VoteService } from '../services/vote.service';
 
 @Component({
@@ -16,15 +18,17 @@ import { VoteService } from '../services/vote.service';
   styleUrls: ['./vote-meal.component.css']
 })
 export class VoteMealComponent implements OnInit{
+  [x: string]: any;
 
   currentResturantInt: number;
   meal: meal;
   currentResturant: restaurant;
   voteCount: number;
+  mealid: number;
 
   
 
-  constructor(private mealService: MealService, private authService: AuthService, private voteService: VoteService) { }
+  constructor(private mealService: MealService, private authService: AuthService, private voteService: VoteService, private messageService: MessageService, private router: Router) { }
 
   
 
@@ -35,6 +39,18 @@ export class VoteMealComponent implements OnInit{
     this.voteCount = this.meal.numVotes;
     console.log(this.currentResturant);
 
+
+    this.messageService.stompClient.subscribe('/vote-message', (message) => {
+      let voteStatus = JSON.parse(message.body);
+      console.log(message.body);
+      console.log(votestatus);
+      console.log('IM SUBSCRIBED');
+      console.log(voteStatus.mealVotingFinished);
+      this.mealService.mealCode = voteStatus.mealId;
+    if (voteStatus.mealVotingFinished == 1) {
+      this.router.navigate(['/results']);
+    }
+    });
   }
   
 

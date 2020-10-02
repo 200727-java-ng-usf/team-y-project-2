@@ -26,7 +26,7 @@ export class MealService {
 
     this.currentMealSubject = new BehaviorSubject<number>(0);
     this.currentMeal$ = this.currentMealSubject.asObservable();
-
+    this.mealCode = this.currentMealSubject.value;
   }
   
 
@@ -96,10 +96,10 @@ export class MealService {
     )}
   
 
-  async retrieveWinningRestauarant(mealCode : number) {
+  async retrieveWinningRestauarant() {
 
     console.log('in retrieveWinningRestaurant() in meal service')
-    return await this.http.get(`${env.API_URL}/meals/results/${mealCode}`)
+    return await this.http.get(`${env.API_URL}meals/results/${this.mealCode}`)
     .toPromise();
   }
 }

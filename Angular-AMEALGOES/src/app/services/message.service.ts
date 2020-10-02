@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Vote } from '../models/vote';
+import { votestatus } from '../models/votestatus';
 declare var SockJS;
 declare var Stomp;
 
@@ -8,7 +10,7 @@ declare var Stomp;
 })
 export class MessageService {
 
-  constructor() {
+  constructor(private router: Router) {
     this.initializeWebSocketConnection();
   }
 
@@ -25,11 +27,10 @@ export class MessageService {
     this.stompClient.connect({}, function(frame) {
       console.log("connection made!!!")
       that.stompClient.subscribe('/vote-message', (message) => {
-        // if (message.body) {
-        //   that.msg.push(message.body);
-        // }
-        console.log(message.body);
-      
+        let voteStatus: votestatus = message.body;
+      if (voteStatus.mealVotingFinished == 1) {
+        this.router.navigate(['/results']);
+      }
       });
     });
   }
@@ -39,4 +40,5 @@ export class MessageService {
     let voteJson = JSON.stringify(vote);
     this.stompClient.send('/app/send/vote-message' , {}, voteJson);
   }
+
 }

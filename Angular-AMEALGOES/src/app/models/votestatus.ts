@@ -4,3 +4,4 @@ export class votestatus {
     userVotingFinished: number
     mealVotingFinished: number
 }
+
