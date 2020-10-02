@@ -26,7 +26,7 @@ export class MealService {
 
     this.currentMealSubject = new BehaviorSubject<number>(0);
     this.currentMeal$ = this.currentMealSubject.asObservable();
-
+    this.mealCode = this.currentMealSubject.value;
   }
   
 
@@ -57,7 +57,7 @@ export class MealService {
     console.log('in joinMeal()')
     console.log(mealCode);
 
-    return this.http.post(`${env.API_URL}/meals/id/${mealCode}`, currentUser, {
+    return this.http.post(`${env.API_URL}meals/id/${mealCode}`, currentUser, {
       headers: {
         'Content-type': 'application/json'
       },
@@ -77,12 +77,12 @@ export class MealService {
 
   async getResturants() {
     console.log(this.currentMealValue);
-    return await this.http.get(`${env.API_URL}/meals/id/${this.currentMealValue}`
+    return await this.http.get(`${env.API_URL}meals/id/${this.currentMealValue}`
     ).toPromise();
   }
 
   votingDone(currentUser: Principal, mealCode: number) {
-    return this.http.post(`${env.API_URL}/meals/voted/id/${mealCode}`, currentUser, {
+    return this.http.post(`${env.API_URL}meals/voted/id/${mealCode}`, currentUser, {
       headers: {
         'Content-type': 'application/json'
       },
@@ -96,10 +96,10 @@ export class MealService {
     )}
   
 
-  async retrieveWinningRestauarant(mealCode : number) {
+  async retrieveWinningRestauarant() {
 
     console.log('in retrieveWinningRestaurant() in meal service')
-    return await this.http.get(`${env.API_URL}/meals/results/${mealCode}`)
+    return await this.http.get(`${env.API_URL}meals/results/${this.mealCode}`)
     .toPromise();
   }
 }

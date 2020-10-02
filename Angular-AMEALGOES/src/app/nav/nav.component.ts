@@ -1,13 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { Principal } from '../models/principal';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent{
+export class NavComponent implements OnDestroy {
 
-  constructor() {
+  currentUser: Principal;
+  currentUserSub: Subscription;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.currentUserSub = this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
+  ngOnDestroy(): void {
+    this.currentUserSub.unsubscribe(); 
   }
 
   authenticatedUserLinks = [
@@ -16,8 +29,16 @@ export class NavComponent{
       fragment: '/home'
     },
     {
+      linkName: 'Register',
+      fragment: '/register'
+    },
+    {
       linkName: 'New Meal',
       fragment: '/newMeal'
+    },
+    {
+      linkName: 'Join Meal',
+      fragment: '/joinMeal'
     }
   ]
 
@@ -29,26 +50,6 @@ export class NavComponent{
     {
       linkName: 'Register',
       fragment: '/register'
-    },
-    {
-      linkName: 'Home',
-      fragment: '/home'
-    },
-    {
-      linkName: 'New Meal',
-      fragment: '/newMeal'
-    },
-    {
-      linkName: 'Vote Meal',
-      fragment: '/voteMeal'
-    },
-    {
-      linkName: 'Join Meal',
-      fragment: '/joinMeal'
-    },
-    {
-      linkName: 'Results',
-      fragment: '/results'
     }
   ]
 }
