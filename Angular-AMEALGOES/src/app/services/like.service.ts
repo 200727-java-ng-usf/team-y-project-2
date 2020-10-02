@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class LikeService {
 
-  private restaurant_id: String = "qwiory";
+  private restaurant_id: number = 1;
 
   constructor(private authService: AuthService, private http: HttpClient) {
   }
@@ -39,7 +39,7 @@ export class LikeService {
     return this.http.get(`${env.API_URL}/users/${userId}/likes/${rest_vote}`).toPromise();
   }
 
-  setCurrentRestaurant(new_restaurant_id: String) {
+  setCurrentRestaurant(new_restaurant_id: number) {
     console.log(new_restaurant_id);
     this.restaurant_id = new_restaurant_id;
   }
