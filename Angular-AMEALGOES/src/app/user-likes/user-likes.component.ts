@@ -25,8 +25,4 @@ export class UserLikesComponent implements OnInit {
     
   }
 
-
-
-
-
 }
