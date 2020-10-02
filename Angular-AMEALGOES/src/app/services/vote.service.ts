@@ -27,16 +27,7 @@ export class VoteService {
 
     this.messageService.sendMessage(vote);
 
-    // return this.http.post('http://localhost:8080/amealgos/vote', vote, {
-    //   headers: {
-    //     'Content-type': 'application/json'
-    //   },
-    //   observe: 'response' // default is body (which refers to the body of the response)
-    // }).pipe(
-    //   map(resp => {
-    //     this.voteCount++
-    //   })
-    // );
+    
   }
 
 }

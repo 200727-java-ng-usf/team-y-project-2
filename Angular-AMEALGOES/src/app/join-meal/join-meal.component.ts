@@ -40,8 +40,6 @@ export class JoinMealComponent implements OnInit {
     .subscribe(
       () => {
         console.log('join-meal-successful');
-        console.log('Navigating to meal voting...');
-        this.router.navigate(['/voteMeal']);
       },
       err => {
         console.log(err);

@@ -54,38 +54,17 @@ export class VoteMealComponent implements OnInit{
       this.voteCount--
       this.currentResturantInt++;
       return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
-
-
-
-    } else if (this.voteCount == 1) {
+    } else {
       let vote = {
         restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
         meal: this.meal.id, //meal id, get meal from api via id
         user: this.authService.currentUserValue.id, //user id
-        vote: 1 //0 or 1
+        vote: 0 //0 or 1
       }
-      
+
       this.voteService.sendVote(vote);
-      //take you to a waiting page?
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('voted-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    } else {
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('voted-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
+  
+      this.voteCount--
     }
 
     
@@ -110,8 +89,7 @@ export class VoteMealComponent implements OnInit{
       this.currentResturantInt++;
       return this.currentResturant = this.meal.restaurants[this.currentResturantInt];
 
-
-    } else if (this.voteCount == 1) {
+    } else {
       let vote = {
         restaurant: this.currentResturant.id, //restaurant id, get resturant from api via id
         meal: this.meal.id, //meal id, get meal from api via id
@@ -120,26 +98,9 @@ export class VoteMealComponent implements OnInit{
       }
 
       this.voteService.sendVote(vote);
+  
+      this.voteCount--
 
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    } else {
-      this.mealService.votingDone(this.authService.currentUserValue, this.mealService.currentMealValue)
-      .subscribe(
-        () => {
-          console.log('vote-successful');
-        },
-        err => {
-          console.log(err);
-        }
-      );
     }
 
     
