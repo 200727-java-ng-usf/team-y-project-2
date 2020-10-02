@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { meal } from '../models/meal';
@@ -12,13 +12,14 @@ import { LikeService } from '../services/like.service';
 import { MealService } from '../services/meal.service';
 import { MessageService } from '../services/message.service';
 import { VoteService } from '../services/vote.service';
+import { LikeComponent } from '../like/like.component';
 
 @Component({
   selector: 'app-vote-meal',
   templateUrl: './vote-meal.component.html',
   styleUrls: ['./vote-meal.component.css']
 })
-export class VoteMealComponent implements OnInit{
+export class VoteMealComponent implements OnInit, AfterViewInit{
   [x: string]: any;
 
   currentResturantInt: number;
@@ -26,6 +27,12 @@ export class VoteMealComponent implements OnInit{
   currentResturant: restaurant;
   voteCount: number;
   mealid: number;
+
+  @ViewChild(LikeComponent) likeComp: LikeComponent;
+
+  ngAfterViewInit() {
+    console.log(this.likeComp.setUpLike());
+  }
 
   
 
@@ -42,16 +49,17 @@ export class VoteMealComponent implements OnInit{
     this.currentResturant = this.meal.restaurants[this.currentResturantInt];
     this.voteCount = this.meal.numVotes;
     
-    this.likeService.setCurrentRestaurant(this.currentResturant.place);
+    this.setupLikeButton();
 
 
     this.messageService.stompClient.subscribe('/vote-message', (message) => {
       let voteStatus = JSON.parse(message.body);
       console.log(message.body);
-      console.log(votestatus);
+      console.log(voteStatus);
       console.log('IM SUBSCRIBED');
       console.log(voteStatus.mealVotingFinished);
       this.mealService.mealCode = voteStatus.mealId;
+      this.setupLikeButton();
     if (voteStatus.mealVotingFinished == 1) {
       this.router.navigate(['/results']);
     }
@@ -75,6 +83,7 @@ export class VoteMealComponent implements OnInit{
       this.currentResturantInt++;
       this.currentResturant = this.meal.restaurants[this.currentResturantInt];
       console.log(this.currentResturant.place);
+      this.setupLikeButton();
       
       return this.currentResturant;
   }
@@ -93,11 +102,18 @@ export class VoteMealComponent implements OnInit{
       this.voteCount--
       this.currentResturantInt++;
       this.currentResturant = this.meal.restaurants[this.currentResturantInt];
+      this.setupLikeButton();
       // this.likeService.setCurrentRestaurant(this.currentResturant.place);
       return this.currentResturant;
     }
 
+  setupLikeButton() {
+    if(this.currentResturant){
+      this.likeService.setCurrentRestaurant(this.currentResturant.id);
+    }
+    this.likeComp.setUpLike();
     
+  }
 
   
     

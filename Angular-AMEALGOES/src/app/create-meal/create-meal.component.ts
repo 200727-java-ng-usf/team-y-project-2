@@ -17,7 +17,7 @@ export class CreateMealComponent implements OnInit {
   newMealForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private mealService: MealService, private restaurantService: RestaurantService, private router: Router, private authService: AuthService) { 
+  constructor(private formBuilder: FormBuilder, private mealService: MealService, private restaurantService: RestaurantService, private router: Router, private authService: AuthService, private googleMapsConnectionService:GoogleMapsConnectionService) { 
 
   }
 
@@ -55,9 +55,9 @@ export class CreateMealComponent implements OnInit {
     let mealName = this.formFields.mealname.value;
     let numVotes = this.formFields.numvotes.value;
 
-    let gmcs = new GoogleMapsConnectionService;
+    //let gmcs = new GoogleMapsConnectionService;
     
-    let restaurants = await gmcs.getRestaurants(city).then( responce => { return responce });
+    let restaurants = await this.googleMapsConnectionService.getRestaurants(city).then( responce => { return responce });
 
     console.log("first restaurant name " + restaurants[0].meal);
     
