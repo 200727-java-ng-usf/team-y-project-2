@@ -1,0 +1,11 @@
+<div id="page-container">
+
+    <app-like></app-like>
+    <div>
+        <span *ngIf="currentResturant"> {{ this.currentResturant.name }} {{ this.currentResturant.address }} </span>
+    </div>
+    
+    <button type="button" class="btn btn-primary" (click)="getNextResturantVote()">Vote for this restaurant</button>
+    <button type="button" class="btn btn-primary" (click)="getNextResturantSkip()">Skip for this restaurant</button>
+    
+</div>

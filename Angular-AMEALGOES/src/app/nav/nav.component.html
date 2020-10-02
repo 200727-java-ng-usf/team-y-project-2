@@ -5,11 +5,27 @@
     aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="nav-links">
+    <!-- <div class="collapse navbar-collapse" id="nav-links">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" *ngFor="let link of unauthenticatedUserLinks">
                 <a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a>
             </li>
         </ul>
+    </div> -->
+
+    <div *ngIf="currentUser">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngFor="let link of authenticatedUserLinks" [routerLink]="link.fragment">
+            <a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a>
+        </li>
+        </ul>
     </div>
+
+    <div *ngIf="!currentUser">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngFor="let link of unauthenticatedUserLinks" [routerLink]="link.fragment">
+            <a class="nav-link" [routerLink]="link.fragment">{{ link.linkName }}</a>
+        </li>
+    </ul>
+</div>
 </nav>

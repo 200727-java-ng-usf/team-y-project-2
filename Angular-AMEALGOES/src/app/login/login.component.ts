@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   
@@ -31,31 +31,31 @@ export class LoginComponent implements OnInit {
   login() {
 
     this.submitted=true;
-    let username = this.formFields.username.value;
+    let email = this.formFields.email.value;
     let password = this.formFields.password.value;
 
     console.log('These are the entered values:');
-    console.log(`Username: ${ username }`);
+    console.log(`Email: ${ email }`);
     console.log(`Password: ${ password }`);
 
     if (this.loginForm.invalid) return;
 
     this.loading = true;
     
-    // this.authService.authenticate(this.formFields.username.value, this.formFields.password.value)
-    //                     .subscribe(
-    //                       () => {
-    //                         this.loading = false;
-    //                         console.log('login-successful');
-    //                         console.log('Navigating to dashboard...');
-    //                         this.router.navigate(['/dashboard']);
-    //                       },
-    //                       err => {
-    //                         console.log(err);
-    //                         this.loading = false;
-    //                         this.submitted = false;
-    //                       }
-    //                     );
+    this.authService.authenticate(this.formFields.email.value, this.formFields.password.value)
+                        .subscribe(
+                          () => {
+                            this.loading = false;
+                            console.log('login-successful');
+                            console.log('Navigating to dashboard...');
+                            this.router.navigate(['/home']);
+                          },
+                          err => {
+                            console.log(err);
+                            this.loading = false;
+                            this.submitted = false;
+                          }
+                        );
 
   }
 }

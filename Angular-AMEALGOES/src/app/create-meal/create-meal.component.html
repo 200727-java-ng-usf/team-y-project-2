@@ -5,24 +5,40 @@
     </header>
 
     <div id="newMeal-container">
-
-        <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
-
+      <form [formGroup]="newMealForm" (ngSubmit)="beginMeal()">
             <div class="form-group">
-                <label for="location">Location</label>
-                <select id="location" class="form-control" formControlName="location">
-                    <option value="loc1">Placeholder Location 1</option>
-                    <option value="loc2">Placeholder Location 2</option>
-                    <option value="loc3">Placeholder Location 3</option>
-                    <option value="loc4">Placeholder Location 4</option>
-                    <option value="loc5">Placeholder Location 5</option>
-                    <option value="loc6">Placeholder Location 6</option>
-                    <option value="loc7">Placeholder Location 7</option>
-                    <option value="loc8">Placeholder Location 8</option>
-                    <option value="loc9">Placeholder Location 9</option>
-                    <option value="loc10">Placeholder Location 10</option>
+                <label for="mealname">Meal name</label>
+                <input id="mealname" type="text" class="form-control" formControlName="mealname"/>
+                <!--<div *ngIf="submitted && formFields.meal-name.errors">-->
+                    <br>
+                    <p class="alert alert-danger">Meal name is required!</p>
+                </div>
+
+            <!-- Area and validation handling -->
+            <div class="form-group">
+                <label for="city">City</label>
+                <select id="city" class="form-control" formControlName="city">
+                <option value = "New York"> New York</option>
+                <option value = "Philadelphia"> Philadelphia</option>
                 </select>
             </div>
+
+            <div class="form-group">
+                <label for="numvotes">Maximum number of votes</label>
+                <select id="numvotes" class="numvotes" formControlName="numvotes">
+                <option value = "1">1</option>
+                <option value = "2">2</option>
+                <option value = "3">3</option>
+                <option value = "4">4</option>
+                <option value = "5">5</option>
+                <option value = "6">6</option>
+                <option value = "7">7</option>
+                <option value = "8">8</option>
+                <option value = "9">9</option>
+                <option value = "10">10</option>
+                </select>
+            </div>
+            
 
             <div class="form-group">
                 <button class="btn btn-primary">Submit</button>

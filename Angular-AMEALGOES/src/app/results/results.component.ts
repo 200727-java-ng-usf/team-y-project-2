@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { result } from '../models/results';
+import { MealService } from '../services/meal.service';
 
 @Component({
   selector: 'app-results',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  result: result;
+  mealCode: number;
+  
 
-  ngOnInit(): void {
+  constructor(private mealService: MealService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.result = <result> await this.mealService.retrieveWinningRestauarant();
   }
+
+  
 
   authenticatedUserLinks = [
     {
