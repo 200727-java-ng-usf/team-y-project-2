@@ -124,8 +124,13 @@ export class GoogleMapsConnectionService {
     }
 
     console.log(`aaa${coordinates}`);
-    return await fetch (`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates}&radius=10000&type=restaurant&key=AIzaSyBFU0cyiQthDyRZ4D426NyHWQpkxiESD_4`
-    ).then(response => response.text())
+    return await fetch (`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates}&radius=10000&type=restaurant&key=AIzaSyBFU0cyiQthDyRZ4D426NyHWQpkxiESD_4`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    }).then(response => response.text())
     .then(text =>  {
       console.log('this is in text '+ text);
       let fullResults = JSON.parse(text);
