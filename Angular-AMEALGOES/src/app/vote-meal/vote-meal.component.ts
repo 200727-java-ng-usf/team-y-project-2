@@ -92,6 +92,7 @@ export class VoteMealComponent implements OnInit{
   
       this.voteCount--
       this.currentResturantInt++;
+      this.currentResturant = this.meal.restaurants[this.currentResturantInt];
       // this.likeService.setCurrentRestaurant(this.currentResturant.place);
       return this.currentResturant;
     }
