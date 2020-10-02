@@ -49,6 +49,10 @@ export class NavComponent{
     {
       linkName: 'Results',
       fragment: '/results'
+    },
+    {
+      linkName: 'User Likes',
+      fragment: '/userlikes'
     }
   ]
 }
