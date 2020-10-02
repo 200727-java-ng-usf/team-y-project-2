@@ -44,10 +44,12 @@ export class LikeService {
 
   getLikes(){
     //let userId = this.authService.currentUserValue.id;
-    let userId = 1;
+    let userId = this.authService.currentUserValue.id;
     console.log(userId);
     
     console.log("endpoint " + `${env.API_URL}users/${userId}/likes`);
+    console.log("endpoint " + `${env.API_URL}users/likes`);
     return this.http.get(`${env.API_URL}users/id/${userId}/likes`).toPromise();
+    //return this.http.get(`${env.API_URL}users/likes`).toPromise();
   }
 }

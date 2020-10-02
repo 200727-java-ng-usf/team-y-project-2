@@ -24,5 +24,5 @@ export class UserLikesComponent implements OnInit {
     return resp2});
     
   }
-
+  
 }
