@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8080/amealgos/'
-  // API_URL: 'http://amealgosapp-env.eba-yiefkdhj.us-east-2.elasticbeanstalk.com/'
+  //API_URL: 'http://localhost:8080/amealgos/'
+  API_URL: 'http://amealgosapp-env.eba-yiefkdhj.us-east-2.elasticbeanstalk.com/amealgos'
 };
 
 /*
